@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从） |  Lost</title>
+      <title>tags |  Lost</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -44,8 +44,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）"
-  class="article article-type-post"
+  id="page-"
+  class="article article-type-page"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -55,88 +55,16 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）
+  tags
 </h1>
  
 
       
     </header>
-     
-    <div class="article-meta">
-      <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" class="article-date">
-  <time datetime="2021-05-14T06:10:00.000Z" itemprop="datePublished">2021-05-14</time>
-</a>   
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">565</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
-  
+       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>&lt;%- toc(page.content) %&gt;</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。</p>
-<p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
-<h1 id="一、XSHELL和XFTP下载与安装"><a href="#一、XSHELL和XFTP下载与安装" class="headerlink" title="一、XSHELL和XFTP下载与安装"></a>一、XSHELL和XFTP下载与安装</h1><pre><code>官网地址：https://www.netsarang.com/zh/free-for-home-school/
-</code></pre>
-<p>（在下载中选中两者填写姓名邮件即可下载，会通过邮件的方式发送）</p>
-<p>1.为什么要使用xshell呢？因为xshell用来在windows界面下访问远端不同系统下的服务器，从而实现较好地远程控制终端的目的。<br>2.为什么使用Xftp呢，就是因为Xftp是一个功能强大的SFTP、FTP 文件传输软件。</p>
-<h1 id="二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机"><a href="#二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机" class="headerlink" title="二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机"></a>二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机</h1><p>教程所使用的是虚拟机的镜像安装 CentOS-7-x86_64-Minimal-2009.iso<br>下载地址:<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/</a><br>然后找到我们上面提到的镜像，选中下载。（因为要同时开三台的虚拟机，博主的内存只有8g，带不动鸭。所以直接就安装最小化的。）</p>
-<p><img src="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>打开hyper-V</p>
-<p>创建新的虚拟机</p>
-<p>由于博主C盘内存不是很多，所以将虚拟机存储到D盘。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514150514313.png" alt="image-20210514150514313"></p>
-<p>选择第二代。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514150629982.png" alt="image-20210514150629982"></p>
-<p>将启动内存设置为2G，即2048MB。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514151128857.png" alt="image-20210514151128857"></p>
-<p>点击下一步</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514151205530.png" alt="image-20210514151205530"></p>
-<p>选择安装的位置，尽量自己要记得住。由于我只是做一次实验，所以大小选择20GB就够了。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514151219313.png" alt="image-20210514151219313"></p>
-<p>选择前面下载的CentOS7光盘映像文件。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514151601608.png" alt="image-20210514151601608"></p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514151622698.png" alt="image-20210514151622698"></p>
-<p>点击完成。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514151646734.png" alt="image-20210514151646734"></p>
-<p>选择中文简体</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514152101289.png" alt="image-20210514152101289"></p>
-<p>点击安装位置，确定是全盘安装，点击完成。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514153208210.png" alt="image-20210514153208210"></p>
-<p>打开网络，配置如图</p>
-<p>勾选需要IPV4地址完成这个链接</p>
-<p>点击完成</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514153754192.png" alt="image-20210514153754192"></p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514153840259.png"></p>
-<p>点击开始安装</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514154202666.png" alt="image-20210514154202666"></p>
-<p>安装过程需要等待，点击设置ROOT密码。</p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514154341278.png" alt="image-20210514154341278"></p>
-<p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514154358767.png" alt="image-20210514154358767"></p>
-<p>安装完成以后点击重启。</p>
-<h1 id="四、导出和导"><a href="#四、导出和导" class="headerlink" title="四、导出和导"></a>四、导出和导</h1><h1 id="入克隆虚拟机、配置虚拟机、搭建集群"><a href="#入克隆虚拟机、配置虚拟机、搭建集群" class="headerlink" title="入克隆虚拟机、配置虚拟机、搭建集群"></a>入克隆虚拟机、配置虚拟机、搭建集群</h1><h1 id="五、用Xshell连接三台虚拟机"><a href="#五、用Xshell连接三台虚拟机" class="headerlink" title="五、用Xshell连接三台虚拟机"></a>五、用Xshell连接三台虚拟机</h1><h1 id="六、配置Hadoop"><a href="#六、配置Hadoop" class="headerlink" title="六、配置Hadoop"></a>六、配置Hadoop</h1> 
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -206,7 +134,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/tags/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -215,16 +143,6 @@
   </div>
 
    
-  <nav class="article-nav">
-    
-    
-      <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">SQlite存储方式</div>
-      </a>
-    
-  </nav>
-
    
 <!-- valine评论 -->
 <div id="vcomments-box">
@@ -274,8 +192,7 @@
 </style>
 
  
-   
-     
+    
 </article>
 
 </section>
@@ -433,22 +350,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
