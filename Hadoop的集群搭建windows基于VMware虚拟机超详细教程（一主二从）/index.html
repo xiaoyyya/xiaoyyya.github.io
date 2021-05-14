@@ -1,222 +1,101 @@
 <!DOCTYPE html>
+
+
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="&lt;%- toc(page.content) %&gt; 前言 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。  参考文章：Hadoop的集群搭建windows基于VMware虚拟">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）">
-<meta property="og:url" content="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/index.html">
-<meta property="og:site_name" content="Lost">
-<meta property="og:description" content="&lt;%- toc(page.content) %&gt; 前言 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。  参考文章：Hadoop的集群搭建windows基于VMware虚拟">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514150514313.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514150629982.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151128857.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151205530.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151219313.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151601608.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151622698.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151646734.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514152101289.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514153208210.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514153754192.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514153840259.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514154202666.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514154341278.png">
-<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514154358767.png">
-<meta property="article:published_time" content="2021-05-14T06:10:00.000Z">
-<meta property="article:modified_time" content="2021-05-14T07:44:51.383Z">
-<meta property="article:author" content="Xiaoy">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
-
-
-<link rel="canonical" href="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;example.com&#x2F;Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89&#x2F;&quot;,&quot;path&quot;:&quot;Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）&#x2F;&quot;,&quot;title&quot;:&quot;Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）&quot;}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从） | Lost</title><script src="/js/config.js"></script>
   
 
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Lost</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</div>
+    <head>
+      <meta charset="utf-8" />
         
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81XSHELL%E5%92%8CXFTP%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">一、XSHELL和XFTP下载与安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8Windows%E8%87%AA%E5%B8%A6%E7%9A%84hhyper-V%E4%B8%AD%E5%AE%89%E8%A3%85CentOS7%E5%B9%B6%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%87%BA%E5%92%8C%E5%AF%BC"><span class="nav-number">4.</span> <span class="nav-text">四、导出和导</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E5%85%8B%E9%9A%86%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="nav-number">5.</span> <span class="nav-text">入克隆虚拟机、配置虚拟机、搭建集群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%A8Xshell%E8%BF%9E%E6%8E%A5%E4%B8%89%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">五、用Xshell连接三台虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AEHadoop"><span class="nav-number">7.</span> <span class="nav-text">六、配置Hadoop</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Xiaoy</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">4</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
-    
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Xiaoy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lost">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从） |  Lost</title>
+  <meta name="generator" content="hexo-theme-ayer">
       
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
 
-      <time title="创建时间：2021-05-14 14:10:00 / 修改时间：15:44:51" itemprop="dateCreated datePublished" datetime="2021-05-14T14:10:00+08:00">2021-05-14</time>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <!-- mermaid -->
+      
+    <link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" class="article-date">
+  <time datetime="2021-05-14T06:10:00.000Z" itemprop="datePublished">2021-05-14</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">565</span>
+        </span>
     </span>
 
-  
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
+        </span>
+    </span>
 </div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
 
-        </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <p>&lt;%- toc(page.content) %&gt;</p>
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>&lt;%- toc(page.content) %&gt;</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。</p>
 <p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
 <h1 id="一、XSHELL和XFTP下载与安装"><a href="#一、XSHELL和XFTP下载与安装" class="headerlink" title="一、XSHELL和XFTP下载与安装"></a>一、XSHELL和XFTP下载与安装</h1><pre><code>官网地址：https://www.netsarang.com/zh/free-for-home-school/
@@ -257,72 +136,518 @@
 <p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514154341278.png" alt="image-20210514154341278"></p>
 <p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514154358767.png" alt="image-20210514154358767"></p>
 <p>安装完成以后点击重启。</p>
-<h1 id="四、导出和导"><a href="#四、导出和导" class="headerlink" title="四、导出和导"></a>四、导出和导</h1><h1 id="入克隆虚拟机、配置虚拟机、搭建集群"><a href="#入克隆虚拟机、配置虚拟机、搭建集群" class="headerlink" title="入克隆虚拟机、配置虚拟机、搭建集群"></a>入克隆虚拟机、配置虚拟机、搭建集群</h1><h1 id="五、用Xshell连接三台虚拟机"><a href="#五、用Xshell连接三台虚拟机" class="headerlink" title="五、用Xshell连接三台虚拟机"></a>五、用Xshell连接三台虚拟机</h1><h1 id="六、配置Hadoop"><a href="#六、配置Hadoop" class="headerlink" title="六、配置Hadoop"></a>六、配置Hadoop</h1>
+<h1 id="四、导出和导"><a href="#四、导出和导" class="headerlink" title="四、导出和导"></a>四、导出和导</h1><h1 id="入克隆虚拟机、配置虚拟机、搭建集群"><a href="#入克隆虚拟机、配置虚拟机、搭建集群" class="headerlink" title="入克隆虚拟机、配置虚拟机、搭建集群"></a>入克隆虚拟机、配置虚拟机、搭建集群</h1><h1 id="五、用Xshell连接三台虚拟机"><a href="#五、用Xshell连接三台虚拟机" class="headerlink" title="五、用Xshell连接三台虚拟机"></a>五、用Xshell连接三台虚拟机</h1><h1 id="六、配置Hadoop"><a href="#六、配置Hadoop" class="headerlink" title="六、配置Hadoop"></a>六、配置Hadoop</h1> 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
     </div>
-
-    
-    
     
 
-    <footer class="post-footer">
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
 
-        
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" rel="prev" title="SQlite存储方式">
-                  <i class="fa fa-chevron-left"></i> SQlite存储方式
-                </a>
-            </div>
-            <div class="post-nav-item">
-            </div>
-          </div>
+<div id="share-mask"></div>  
     </footer>
-  </article>
-</div>
-
-
-
-
-
-<script src="/js/comments.js"></script>
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Xiaoy</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">SQlite存储方式</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> Xiaoy
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Lost"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
     </div>
-  </footer>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
 
-  
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
 
-  
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
 
 
-
-
-
-
-  
-
-
-
-
-
+    
+  </div>
 </body>
+
 </html>
