@@ -20,23 +20,44 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lost">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="&lt;%- toc(page.content) %&gt; 前言 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。  参考文章：Hadoop的集群搭建windows基于VMware虚拟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）">
+<meta property="og:url" content="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/index.html">
 <meta property="og:site_name" content="Lost">
+<meta property="og:description" content="&lt;%- toc(page.content) %&gt; 前言 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。  参考文章：Hadoop的集群搭建windows基于VMware虚拟">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514150514313.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514150629982.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151128857.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151205530.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151219313.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151601608.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151622698.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514151646734.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514152101289.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514153208210.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514153754192.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514153840259.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514154202666.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514154341278.png">
+<meta property="og:image" content="c:/Users/潘玉桂/AppData/Roaming/Typora/typora-user-images/image-20210514154358767.png">
+<meta property="article:published_time" content="2021-05-14T06:10:00.000Z">
+<meta property="article:modified_time" content="2021-05-14T07:44:51.383Z">
 <meta property="article:author" content="Xiaoy">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;example.com&#x2F;Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89&#x2F;&quot;,&quot;path&quot;:&quot;Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）&#x2F;&quot;,&quot;title&quot;:&quot;Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>Lost</title><script src="/js/config.js"></script>
+<title>Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从） | Lost</title><script src="/js/config.js"></script>
   
 
 
@@ -91,7 +112,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -104,6 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81XSHELL%E5%92%8CXFTP%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">一、XSHELL和XFTP下载与安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8Windows%E8%87%AA%E5%B8%A6%E7%9A%84hhyper-V%E4%B8%AD%E5%AE%89%E8%A3%85CentOS7%E5%B9%B6%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%87%BA%E5%92%8C%E5%AF%BC"><span class="nav-number">4.</span> <span class="nav-text">四、导出和导</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E5%85%8B%E9%9A%86%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="nav-number">5.</span> <span class="nav-text">入克隆虚拟机、配置虚拟机、搭建集群</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%A8Xshell%E8%BF%9E%E6%8E%A5%E4%B8%89%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">五、用Xshell连接三台虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AEHadoop"><span class="nav-number">7.</span> <span class="nav-text">六、配置Hadoop</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -145,16 +167,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -167,9 +190,9 @@
       <meta itemprop="name" content="Lost">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EVMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" class="post-title-link" itemprop="url">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -193,7 +216,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>&lt;%- toc(page.content) %&gt;</p>
+        <p>&lt;%- toc(page.content) %&gt;</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。</p>
 <p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
 <h1 id="一、XSHELL和XFTP下载与安装"><a href="#一、XSHELL和XFTP下载与安装" class="headerlink" title="一、XSHELL和XFTP下载与安装"></a>一、XSHELL和XFTP下载与安装</h1><pre><code>官网地址：https://www.netsarang.com/zh/free-for-home-school/
@@ -235,7 +258,6 @@
 <p><img src="C:\Users\潘玉桂\AppData\Roaming\Typora\typora-user-images\image-20210514154358767.png" alt="image-20210514154358767"></p>
 <p>安装完成以后点击重启。</p>
 <h1 id="四、导出和导"><a href="#四、导出和导" class="headerlink" title="四、导出和导"></a>四、导出和导</h1><h1 id="入克隆虚拟机、配置虚拟机、搭建集群"><a href="#入克隆虚拟机、配置虚拟机、搭建集群" class="headerlink" title="入克隆虚拟机、配置虚拟机、搭建集群"></a>入克隆虚拟机、配置虚拟机、搭建集群</h1><h1 id="五、用Xshell连接三台虚拟机"><a href="#五、用Xshell连接三台虚拟机" class="headerlink" title="五、用Xshell连接三台虚拟机"></a>五、用Xshell连接三台虚拟机</h1><h1 id="六、配置Hadoop"><a href="#六、配置Hadoop" class="headerlink" title="六、配置Hadoop"></a>六、配置Hadoop</h1>
-      
     </div>
 
     
@@ -243,230 +265,22 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" rel="prev" title="SQlite存储方式">
+                  <i class="fa fa-chevron-left"></i> SQlite存储方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Xiaoy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lost">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">SQlite存储方式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-04 09:52:20" itemprop="dateCreated datePublished" datetime="2021-05-04T09:52:20+08:00">2021-05-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-07 13:10:09" itemprop="dateModified" datetime="2021-05-07T13:10:09+08:00">2021-05-07</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Android使用SQLite作为存储数据库，它是一个免费开源且与底层无关的数据库。<br>Android提供了创建和使用SQLite数据库的API</p>
-<p>LayoutInflater将布局XML文件实例化为其相应的视图对象</p>
-<p>ArrayAdapter数组适配器</p>
-<p>ArrayAdapter是一个比较简单的数组适配器，只能展示一行文字，无需自定义布局，使用系统提供的布局即可。<br>这个适配器可以为AdapterView提供视图，为您提供的数据对象集合中的每个对象返回视图，并且可以与基于列表的用户界面小部件（ListView或Spinner）一起使用。</p>
-<p><span style='color:white;background:black;font-size:20px;font-family:仿宋;'>默认情况下，数组适配器通过对您提供的集合的每个数据对象调用Object.toString()来创建一个视图，并且将结果放置在TextView中。</span><br>您还可以自定义用于集合中数据对象的视图类型，要自定义数据对象使用的视图类型。</p>
-<p>以下是ArrayAdapter常用的构造函数用于生成数组适配器：<br><span style='color:white;background:black;font-size:20px;font-family:仿宋;'><br>ArrayAdapter(Context context,int resourse,int textViewResId)<br>ArrayAdapter(Context context,int textViewResId,T[] object)<br>ArrayAdapter(Context context,int textViewResId,List&lt;<span style="color:red;">T</span>&gt;object)</span></p>
-<p>Context: 上下文环境，在Activity中一般使用this<br>resourse: 资源ID<br>textViewResId：文本视图资源ID，如下拉列表组件的ID<br>object： 泛指数据/集合</p>
-<p>ArrayAdapter使用步骤：<br><b>·</b> 定义一个数组或者集合用于存放ListView中的item的内容<br><b>·</b> 使用ArrayAdapter的构造方法创建一个ArrayAdapter对象。ArrayAdapter有很多构造函数的方法，最常用的就是带有三个参数的方法，第一个是上下文对象，第二个参数对象是ListView每一行（item）的布局资源ID；第三个参数就是数据源。<br><b>·</b> 使用ListView的setAdapter()方法绑定ArrayAdapter.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Xiaoy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lost">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/test/" class="post-title-link" itemprop="url">test</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-05-02 01:15:52 / 修改时间：01:16:59" itemprop="dateCreated datePublished" datetime="2021-05-02T01:15:52+08:00">2021-05-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Xiaoy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lost">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-01 14:17:27" itemprop="dateCreated datePublished" datetime="2021-05-01T14:17:27+08:00">2021-05-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
