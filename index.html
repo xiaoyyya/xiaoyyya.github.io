@@ -194,13 +194,14 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置单台CnetOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。</p>
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 查阅了许多资料和参考了其他博主的文章之后，又经过几次试验以后终于成功搭建出了基于Windows自身的Hyper-V虚拟机的hadoop集群。基于Windows10系统，配置三台CentOS虚拟机，部署hadoop-2.7.7,出本教程希望可以帮助到有需要的朋友。</p>
 <p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
-<h1 id="一、XSHELL和XFTP下载与安装"><a href="#一、XSHELL和XFTP下载与安装" class="headerlink" title="一、XSHELL和XFTP下载与安装"></a>一、XSHELL和XFTP下载与安装</h1><pre><code>官网地址：https://www.netsarang.com/zh/free-for-home-school/
+<h1 id="一、XSHELL下载与-WinSCP安装"><a href="#一、XSHELL下载与-WinSCP安装" class="headerlink" title="一、XSHELL下载与 WinSCP安装"></a>一、XSHELL下载与 WinSCP安装</h1><pre><code>官网地址：https://www.netsarang.com/zh/free-for-home-school/
+官网地址：https://winscp.net/eng/download.php
 </code></pre>
-<p>（在下载中选中两者填写姓名邮件即可下载，会通过邮件的方式发送）</p>
-<p>1.为什么要使用xshell呢？因为xshell用来在windows界面下访问远端不同系统下的服务器，从而实现较好地远程控制终端的目的。<br>2.为什么使用Xftp呢，就是因为Xftp是一个功能强大的SFTP、FTP 文件传输软件。</p>
-<h1 id="二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机"><a href="#二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机" class="headerlink" title="二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机"></a>二、在Windows自带的hhyper-V中安装CentOS7并创建虚拟机</h1><p>教程所使用的是虚拟机的镜像安装 CentOS-7-x86_64-Minimal-2009.iso<br>下载地址:<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/</a><br>然后找到我们上面提到的镜像，选中下载。（因为要同时开三台的虚拟机，博主的内存只有8g，带不动鸭。所以直接就安装最小化的。）</p>
+<p>（在下载中选中XSHELL填写姓名邮件即可下载，会通过邮件的方式发送）</p>
+<p>1.为什么要使用xshell呢？因为xshell用来在windows界面下访问远端不同系统下的服务器，从而实现较好地远程控制终端的目的。</p>
+<h1 id="二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机"><a href="#二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机" class="headerlink" title="二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机"></a>二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机</h1><p>教程所使用的是虚拟机的镜像安装 CentOS-7-x86_64-Minimal-2009.iso<br>下载地址:<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/</a><br>然后找到我们上面提到的镜像，选中下载。</p>
 <p><img src="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <p>打开hyper-V</p>
 <p>创建新的虚拟机</p>
