@@ -17,6 +17,7 @@
     <title>Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</title>
     <url>/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
+<p>安装包提取地址：链接：<a href="https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA">https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA</a><br>提取码：y1y2<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
 <p> <b>参考文章：<a href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
 <h1 id="一、XSHELL下载与-WinSCP安装"><a href="#一、XSHELL下载与-WinSCP安装" class="headerlink" title="一、XSHELL下载与 WinSCP安装"></a>一、XSHELL下载与 WinSCP安装</h1><pre><code>XShell 下载地址：https://www.netsarang.com/zh/free-for-home-school/
 
@@ -248,12 +249,6 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 ]]></content>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/test/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -269,6 +264,12 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/test/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 ]]></content>
   </entry>
 </search>
