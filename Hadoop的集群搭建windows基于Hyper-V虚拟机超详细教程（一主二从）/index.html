@@ -61,7 +61,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.3k</span>
+            <span class="post-count">4.5k</span>
         </span>
     </span>
 
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">19 分钟</span>
+            <span class="post-count">20 分钟</span>
         </span>
     </span>
 </div>
@@ -356,28 +356,28 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 <p>通过 uname -r 命令查看你当前的内核版本</p>
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/59.png"></p>
 <p><strong>tips</strong>:从 2017 年 3 月开始 docker 在原来的基础上分为两个分支版本: Docker CE 和 Docker EE。<br> Docker CE 即社区免费版，Docker EE 即企业版，强调安全，但需付费使用。</p>
-<h2 id="1-2安装与配置"><a href="#1-2安装与配置" class="headerlink" title="1.2安装与配置"></a>1.2安装与配置</h2><h6 id="1-更新-yum-源"><a href="#1-更新-yum-源" class="headerlink" title="1.更新 yum 源"></a>1.更新 yum 源</h6><p>输入以下命令回车执行：</p>
+<h2 id="1-2安装与配置"><a href="#1-2安装与配置" class="headerlink" title="1.2安装与配置"></a>1.2安装与配置</h2><h5 id="1-更新-yum-源"><a href="#1-更新-yum-源" class="headerlink" title="1.更新 yum 源"></a>1.更新 yum 源</h5><p>输入以下命令回车执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
 
-<h6 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2.安装依赖包"></a>2.安装依赖包</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2 </span><br></pre></td></tr></table></figure>
+<h5 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2.安装依赖包"></a>2.安装依赖包</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2 </span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/57.png"></p>
-<h6 id="3-设置阿里云镜像源"><a href="#3-设置阿里云镜像源" class="headerlink" title="3.设置阿里云镜像源"></a>3.设置阿里云镜像源</h6><ul>
+<h5 id="3-设置阿里云镜像源"><a href="#3-设置阿里云镜像源" class="headerlink" title="3.设置阿里云镜像源"></a>3.设置阿里云镜像源</h5><ul>
 <li>重建 Yum 缓存。</li>
 <li>安装 Docker-CE ，请执行一下命令进行安装：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
 
-<h6 id="4-启动-Docker-CE"><a href="#4-启动-Docker-CE" class="headerlink" title="4.启动 Docker-CE"></a>4.启动 Docker-CE</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br><span class="line"></span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+<h5 id="4-启动-Docker-CE"><a href="#4-启动-Docker-CE" class="headerlink" title="4.启动 Docker-CE"></a>4.启动 Docker-CE</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br><span class="line"></span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
 
-<h6 id="5-镜像加速配置"><a href="#5-镜像加速配置" class="headerlink" title="5.镜像加速配置"></a>5.镜像加速配置</h6><p>这里使用的是 <a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/#/accelerator">阿里云提供的镜像加速</a> ，登录并且设置密码之后在左侧容器镜像服务下的镜像加速，如下图三步，</p>
+<h5 id="5-镜像加速配置"><a href="#5-镜像加速配置" class="headerlink" title="5.镜像加速配置"></a>5.镜像加速配置</h5><p>这里使用的是 <a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/#/accelerator">阿里云提供的镜像加速</a> ，登录并且设置密码之后在左侧容器镜像服务下的镜像加速，如下图三步，</p>
 <p>通过修改daemon配置文件/etc/docker/daemon.json来使用加速器，将步骤三的命令复制到主机命令窗口。</p>
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/58.png"></p>
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/53.png"></p>
 <p>之后重新加载配置，并且重启 Docker 服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
 
-<h6 id="6-测试运行-hello-world"><a href="#6-测试运行-hello-world" class="headerlink" title="6.测试运行 hello-world"></a>6.测试运行 hello-world</h6><p>输入命令：</p>
+<h5 id="6-测试运行-hello-world"><a href="#6-测试运行-hello-world" class="headerlink" title="6.测试运行 hello-world"></a>6.测试运行 hello-world</h5><p>输入命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/56.png"></p>
@@ -386,6 +386,33 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/57.png"></p>
 <p>如上图显示的绿色字体，active（runing)表示正在运行。</p>
+<h2 id="2-docker镜像操作"><a href="#2-docker镜像操作" class="headerlink" title="2.docker镜像操作"></a>2.docker镜像操作</h2><h3 id="2-1列出所有docker镜像"><a href="#2-1列出所有docker镜像" class="headerlink" title="2.1列出所有docker镜像"></a>2.1列出所有docker镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/60.png"></p>
+<p>各个选项说明:</p>
+<p>REPOSITORY：表示镜像的仓库源</p>
+<p>TAG：镜像的标签</p>
+<p>IMAGE ID：镜像ID</p>
+<p>CREATED：镜像创建时间</p>
+<p>SIZE：镜像大小</p>
+<p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
+<h2 id="2-2拉取镜像"><a href="#2-2拉取镜像" class="headerlink" title="2.2拉取镜像"></a>2.2拉取镜像</h2><p>拉取微软在 Docker 上的 aspnetcore 镜像:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull microsoft&#x2F;aspnetcore</span><br></pre></td></tr></table></figure>
+
+<p>之后执行以下命令查看是否拉取成功:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/64.png"></p>
+<h2 id="3-docker容器操作"><a href="#3-docker容器操作" class="headerlink" title="3.docker容器操作"></a>3.docker容器操作</h2><p>容器是基于镜像创建的，说白了把一个镜像运行起来就是容器</p>
+<h3 id="3-1查看容器"><a href="#3-1查看容器" class="headerlink" title="3.1查看容器"></a>3.1查看容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/65.png"></p>
+<h2 id="3-2创建容器"><a href="#3-2创建容器" class="headerlink" title="3.2创建容器"></a>3.2创建容器</h2><p>docker run 创建tomcat容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name tomcat -d -p 8080:8080 tomcat</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/66.png"></p>
+<p>访问试试，通过浏览器输入主机ip:8080成功访问到tomcat主页。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8504906-bea4002f5278c143.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p>
  
       <!-- reward -->
       
