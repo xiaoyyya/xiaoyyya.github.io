@@ -101,7 +101,7 @@
 
 <h2 id="1-1查看CentOS内核"><a href="#1-1查看CentOS内核" class="headerlink" title="1.1查看CentOS内核"></a>1.1查看CentOS内核</h2><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。</p>
 <p>通过 uname -r 命令查看你当前的内核版本</p>
-<p><img src="/Docker/10.png"></p>
+<p><img src="/Docker/9.png"></p>
 <p><strong>tips</strong>:从 2017 年 3 月开始 docker 在原来的基础上分为两个分支版本: Docker CE 和 Docker EE。<br> Docker CE 即社区免费版，Docker EE 即企业版，强调安全，但需付费使用。</p>
 <h2 id="1-2安装与配置"><a href="#1-2安装与配置" class="headerlink" title="1.2安装与配置"></a>1.2安装与配置</h2><h6 id="1-更新-yum-源"><a href="#1-更新-yum-源" class="headerlink" title="1.更新 yum 源"></a>1.更新 yum 源</h6><p>输入以下命令回车执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
@@ -119,19 +119,19 @@
 
 <h6 id="5-镜像加速配置"><a href="#5-镜像加速配置" class="headerlink" title="5.镜像加速配置"></a>5.镜像加速配置</h6><p>这里使用的是 <a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/#/accelerator">阿里云提供的镜像加速</a> ，登录并且设置密码之后在左侧容器镜像服务下的镜像加速，如下图三步，</p>
 <p>通过修改daemon配置文件/etc/docker/daemon.json来使用加速器，将步骤三的命令复制到主机命令窗口。</p>
-<p><img src="/Docker/11.png"></p>
-<p><img src="/Docker/5.png"></p>
+<p><img src="/Docker/10.png"></p>
+<p><img src="/Docker/4.png"></p>
 <p>之后重新加载配置，并且重启 Docker 服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
 
 <h6 id="6-测试运行-hello-world"><a href="#6-测试运行-hello-world" class="headerlink" title="6.测试运行 hello-world"></a>6.测试运行 hello-world</h6><p>输入命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Docker/8.png"></p>
+<p><img src="/Docker/7.png"></p>
 <p>由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行，看到显示Hello from Docker!表示Docker安装启动成功。</p>
 <h6 id="7-查看docker状态"><a href="#7-查看docker状态" class="headerlink" title="7.查看docker状态"></a>7.查看docker状态</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Docker/9.png"></p>
+<p><img src="/Docker/8.png"></p>
 <p>如上图显示的绿色字体，active（runing)表示正在运行。</p>
  
       <!-- reward -->
