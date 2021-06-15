@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从） |  Lost</title>
+      <title> Lost</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -51,27 +51,17 @@
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）
-</h1>
- 
-
-      
-    </header>
      
     <div class="article-meta">
       <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" class="article-date">
-  <time datetime="2021-05-14T15:25:08.000Z" itemprop="datePublished">2021-05-14</time>
+  <time datetime="2021-05-14T15:25:08.956Z" itemprop="datePublished">2021-05-14</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.7k</span>
+            <span class="post-count">3.8k</span>
         </span>
     </span>
 
@@ -80,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">16 分钟</span>
+            <span class="post-count">17 分钟</span>
         </span>
     </span>
 </div>
@@ -95,7 +85,8 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
+  <h2 id="title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）"><a href="#title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）" class="headerlink" title="title: Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）"></a>title: Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</h2><p>date: 2021-05-14 23:25:08<br>tags:</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
 <p>安装包提取地址：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA">https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA</a><br>提取码：y1y2<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
 <p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
 <h1 id="一、XSHELL下载与-WinSCP安装"><a href="#一、XSHELL下载与-WinSCP安装" class="headerlink" title="一、XSHELL下载与 WinSCP安装"></a>一、XSHELL下载与 WinSCP安装</h1><pre><code>XShell 下载地址：https://www.netsarang.com/zh/free-for-home-school/
@@ -273,36 +264,27 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 <p>依次运行以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r &#x2F;root&#x2F;HadoopTools root@y1:&#x2F;root&#x2F;</span><br><span class="line">scp -r &#x2F;root&#x2F;HadoopTools root@y2:&#x2F;root&#x2F;</span><br></pre></td></tr></table></figure>
 
-<h1 id="七、配置、格式化、启动HDFS"><a href="#七、配置、格式化、启动HDFS" class="headerlink" title="七、配置、格式化、启动HDFS"></a>七、配置、格式化、启动HDFS</h1><p> 配置hdfs-site.xml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.replication&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;value&gt;1&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="七、配置、格式化、启动HDFS"><a href="#七、配置、格式化、启动HDFS" class="headerlink" title="七、配置、格式化、启动HDFS"></a>七、配置、格式化、启动HDFS</h1><h2 id="7-1配置hdfs-site-xml"><a href="#7-1配置hdfs-site-xml" class="headerlink" title="7.1配置hdfs-site.xml"></a>7.1配置hdfs-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.replication&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;value&gt;1&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
 
-<p><strong>该命令只能在master上执行，且只能执行一次，不可多次执行。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br><span class="line"></span><br><span class="line">&#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;etc&#x2F;hadoop&#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="7-2该命令只能在master上执行，且只能执行一次，不可多次执行。"><a href="#7-2该命令只能在master上执行，且只能执行一次，不可多次执行。" class="headerlink" title="7.2该命令只能在master上执行，且只能执行一次，不可多次执行。"></a>7.2<strong>该命令只能在master上执行，且只能执行一次，不可多次执行。</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br><span class="line"></span><br><span class="line">&#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;etc&#x2F;hadoop&#x2F;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/38.png"></p>
 <p>当看到如上图中所示 successfully 提示信息则表示格式化成功。</p>
-<p><strong>启动NameNode</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;hadoop-daemon.sh start namenode starting namenode, logging to &#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;logs&#x2F;hadoop-hadoop-namenode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
+<h2 id="7-3启动NameNode"><a href="#7-3启动NameNode" class="headerlink" title="7.3启动NameNode"></a>7.3<strong>启动NameNode</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;hadoop-daemon.sh start namenode starting namenode, logging to &#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;logs&#x2F;hadoop-hadoop-namenode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
 
-<p><strong>启动DataNode</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;hadoop-daemon.sh start datanode starting datanode, logging to &#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;logs&#x2F;hadoop-hadoop-datanode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
+<h2 id="7-4启动DataNode"><a href="#7-4启动DataNode" class="headerlink" title="7.4启动DataNode"></a>7.4<strong>启动DataNode</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;hadoop-daemon.sh start datanode starting datanode, logging to &#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;logs&#x2F;hadoop-hadoop-datanode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
 
-<p><strong>启动SecondaryNameNode</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;hadoop-daemon.sh start secondarynamenode starting secondarynamenode, logging to &#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;logs&#x2F;hadoop-hadoop-secondarynamenode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
+<h2 id="7-5启动SecondaryNameNode"><a href="#7-5启动SecondaryNameNode" class="headerlink" title="7.5启动SecondaryNameNode"></a>7.5<strong>启动SecondaryNameNode</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;hadoop-daemon.sh start secondarynamenode starting secondarynamenode, logging to &#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;logs&#x2F;hadoop-hadoop-secondarynamenode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
 
-<p><strong>HDFS上测试创建目录、上传、下载文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;bin&#x2F;hdfs dfs -mkdir &#x2F;demo1</span><br><span class="line">[root@main hadoop-2.7.7]# $&#123;HADOOP_HOME&#125;&#x2F;bin&#x2F;hdfs dfs -put $&#123;HADOOP_HOME&#125;&#x2F;etc&#x2F;hadoop&#x2F;core-site.xml &#x2F;demo1</span><br><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;bin&#x2F;hdfs dfs -cat &#x2F;demo1&#x2F;core-site.xml</span><br></pre></td></tr></table></figure>
+<h2 id="7-6HDFS上测试创建目录、上传、下载文件"><a href="#7-6HDFS上测试创建目录、上传、下载文件" class="headerlink" title="7.6HDFS上测试创建目录、上传、下载文件"></a>7.6<strong>HDFS上测试创建目录、上传、下载文件</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;bin&#x2F;hdfs dfs -mkdir &#x2F;demo1</span><br><span class="line">[root@main hadoop-2.7.7]# $&#123;HADOOP_HOME&#125;&#x2F;bin&#x2F;hdfs dfs -put $&#123;HADOOP_HOME&#125;&#x2F;etc&#x2F;hadoop&#x2F;core-site.xml &#x2F;demo1</span><br><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;bin&#x2F;hdfs dfs -cat &#x2F;demo1&#x2F;core-site.xml</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/47.png"></p>
-<p>#从HDFS上下载文件到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  bin&#x2F;hdfs dfs -get &#x2F;demo1&#x2F;core-site.xml</span><br></pre></td></tr></table></figure>
+<h2 id="7-7从HDFS上下载文件到本地"><a href="#7-7从HDFS上下载文件到本地" class="headerlink" title="7.7从HDFS上下载文件到本地"></a>7.7从HDFS上下载文件到本地</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  bin&#x2F;hdfs dfs -get &#x2F;demo1&#x2F;core-site.xml</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/45.png"></p>
-<p>#启动Resourcemanager</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;yarn-daemon.sh start resourcemanager</span><br></pre></td></tr></table></figure>
+<h2 id="7-8启动Resourcemanager"><a href="#7-8启动Resourcemanager" class="headerlink" title="7.8启动Resourcemanager"></a>7.8启动Resourcemanager</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;yarn-daemon.sh start resourcemanager</span><br></pre></td></tr></table></figure>
 
-<p>#启动nodemanager</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;yarn-daemon.sh start nodemanager</span><br></pre></td></tr></table></figure>
+<h2 id="7-9启动nodemanager"><a href="#7-9启动nodemanager" class="headerlink" title="7.9启动nodemanager"></a>7.9启动nodemanager</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;&#x2F;sbin&#x2F;yarn-daemon.sh start nodemanager</span><br></pre></td></tr></table></figure>
 
 <p>#查看是否启动成功</p>
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/46.png"></p>
@@ -312,24 +294,20 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 <h2 id="8-2用宿主机浏览器访问-http-192-168-123-10-50070-查看启动是否成功。"><a href="#8-2用宿主机浏览器访问-http-192-168-123-10-50070-查看启动是否成功。" class="headerlink" title="8.2用宿主机浏览器访问 http://192.168.123.10:50070 查看启动是否成功。"></a>8.2用宿主机浏览器访问 <a target="_blank" rel="noopener" href="http://192.168.123.10:50070/">http://192.168.123.10:50070</a> 查看启动是否成功。</h2><p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/39.png"></p>
 <p>在上图可以看到有3台节点同时在线，如果不是3台证明有问题，需要查看哪里出错了。如果是3台表配置成功。</p>
 <h2 id="8-3登陆yarn的WebUI-http-192-168-123-10-8088"><a href="#8-3登陆yarn的WebUI-http-192-168-123-10-8088" class="headerlink" title="8.3登陆yarn的WebUI http://192.168.123.10:8088/"></a>8.3登陆yarn的WebUI <a target="_blank" rel="noopener" href="http://192.168.123.10:8088/">http://192.168.123.10:8088/</a></h2><p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/40.png"></p>
-<h1 id="九、运行MapReduce-Job"><a href="#九、运行MapReduce-Job" class="headerlink" title="九、运行MapReduce Job"></a>九、<strong>运行MapReduce Job</strong></h1><p><strong>#创建测试用的Input文件,创建输入目录:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]# bin&#x2F;hdfs dfs -mkdir -p &#x2F;wordcountdemo&#x2F;input</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="九、运行MapReduce-Job"><a href="#九、运行MapReduce-Job" class="headerlink" title="九、运行MapReduce Job"></a>九、<strong>运行MapReduce Job</strong></h1><h2 id="9-1创建测试用的Input文件-创建输入目录"><a href="#9-1创建测试用的Input文件-创建输入目录" class="headerlink" title="9.1创建测试用的Input文件,创建输入目录:"></a>9.1创建测试用的Input文件,创建输入目录:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]# bin&#x2F;hdfs dfs -mkdir -p &#x2F;wordcountdemo&#x2F;input</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>#将wc.input文件上传到HDFS的/wordcountdemo/input目录中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  bin&#x2F;hdfs dfs -put &#x2F;opt&#x2F;data&#x2F;wc.input &#x2F;wordcountdemo&#x2F;input</span><br></pre></td></tr></table></figure>
+<h2 id="9-2将wc-input文件上传到HDFS的-wordcountdemo-input目录中"><a href="#9-2将wc-input文件上传到HDFS的-wordcountdemo-input目录中" class="headerlink" title="9.2将wc.input文件上传到HDFS的/wordcountdemo/input目录中:"></a>9.2将wc.input文件上传到HDFS的/wordcountdemo/input目录中:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  bin&#x2F;hdfs dfs -put &#x2F;opt&#x2F;data&#x2F;wc.input &#x2F;wordcountdemo&#x2F;input</span><br></pre></td></tr></table></figure>
 
-<p>#运行WordCount MapReduce Job</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin&#x2F;yarn jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.7.jar wordcount &#x2F;wordcountdemo&#x2F;input &#x2F;wordcountdemo&#x2F;output</span><br></pre></td></tr></table></figure>
+<h2 id="9-3运行WordCount-MapReduce-Job"><a href="#9-3运行WordCount-MapReduce-Job" class="headerlink" title="9.3运行WordCount MapReduce Job"></a>9.3运行WordCount MapReduce Job</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin&#x2F;yarn jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.7.jar wordcount &#x2F;wordcountdemo&#x2F;input &#x2F;wordcountdemo&#x2F;output</span><br></pre></td></tr></table></figure>
 
-<p>#查看输出结果目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin&#x2F;hdfs dfs -ls &#x2F;wordcountdemo&#x2F;output</span><br></pre></td></tr></table></figure>
+<h2 id="9-4查看输出结果目录"><a href="#9-4查看输出结果目录" class="headerlink" title="9.4查看输出结果目录"></a>9.4查看输出结果目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin&#x2F;hdfs dfs -ls &#x2F;wordcountdemo&#x2F;output</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/48.png"></p>
 <p>output目录中有两个文件，_SUCCESS文件是空文件，有这个文件说明Job执行成功。part-r-00000文件是结果文件，其中-r-说明这个文件是Reduce阶段产生的结果，mapreduce程序执行时，可以没有reduce阶段，但是肯定会有map阶段，如果没有reduce阶段这个地方有是-m-。一个reduce会产生一个part-r-开头的文件。查看输出文件内容。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin&#x2F;hdfs dfs -cat &#x2F;wordcountdemo&#x2F;output&#x2F;part-r-00000</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/49.png"></p>
-<h1 id="十、安装spark"><a href="#十、安装spark" class="headerlink" title="十、安装spark"></a>十、安装spark</h1><h2 id="9-1登陆Apache-spark官网下载spark"><a href="#9-1登陆Apache-spark官网下载spark" class="headerlink" title="9.1登陆Apache spark官网下载spark"></a>9.1登陆Apache spark官网下载spark</h2><p>地址：<a target="_blank" rel="noopener" href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a><br>如下图所示下载 Spark:</p>
+<h1 id="十、安装spark"><a href="#十、安装spark" class="headerlink" title="十、安装spark"></a>十、安装spark</h1><h2 id="10-1登陆Apache-spark官网下载spark"><a href="#10-1登陆Apache-spark官网下载spark" class="headerlink" title="10.1登陆Apache spark官网下载spark"></a>10.1登陆Apache spark官网下载spark</h2><p>地址：<a target="_blank" rel="noopener" href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a><br>如下图所示下载 Spark:</p>
 <p><img src="https://img-blog.csdnimg.cn/20210512154150632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <p>再次使用Win SCP 将下载的压缩包传到main主机</p>
 <p>在Xshell中解压刚刚上传的压缩包（依次输入下面命令）：</p>
@@ -343,14 +321,14 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/41.png"></p>
 <p>输入：source /root/.bash_profile，使其生效。</p>
-<h2 id="9-2编辑spark-env-sh"><a href="#9-2编辑spark-env-sh" class="headerlink" title="9.2编辑spark-env.sh"></a>9.2编辑spark-env.sh</h2><p>输入：</p>
+<h2 id="10-2编辑spark-env-sh"><a href="#10-2编辑spark-env-sh" class="headerlink" title="10.2编辑spark-env.sh"></a>10.2编辑spark-env.sh</h2><p>输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root&#x2F;HadoopTools&#x2F;spark&#x2F;conf&#x2F;</span><br><span class="line"></span><br><span class="line">cp spark-env.sh.template spark-env.sh</span><br><span class="line"></span><br><span class="line">vim spark-env.sh</span><br></pre></td></tr></table></figure>
 
 <p>将下面内容添加到文件中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;root&#x2F;HadoopTools&#x2F;jdk1.8.0_171</span><br><span class="line">export SPARK_MASTER_IP&#x3D;192.168.123.10</span><br><span class="line">export SPARK_WORKER_MEMORY&#x3D;1g</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;&#x2F;root&#x2F;HadoopTools&#x2F;hadoop-2.7.7&#x2F;etc&#x2F;hadoop</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/42.png"></p>
-<h2 id="9-3添加y1，y2节点信息"><a href="#9-3添加y1，y2节点信息" class="headerlink" title="9.3添加y1，y2节点信息"></a>9.3添加y1，y2节点信息</h2><p>输入：</p>
+<h2 id="10-3添加y1，y2节点信息"><a href="#10-3添加y1，y2节点信息" class="headerlink" title="10.3添加y1，y2节点信息"></a>10.3添加y1，y2节点信息</h2><p>输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;root&#x2F;HadoopTools&#x2F;spark&#x2F;conf&#x2F;slaves</span><br></pre></td></tr></table></figure>
 
 <p>在文件中添加，保存退出：</p>
