@@ -62,9 +62,15 @@
 ]]></content>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/test/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+    <title>Android导入工程解决SDK不适配</title>
+    <url>/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们在学习过程中经常会从网上下载一些开源的代码去学习，这个时候工程和我们所属的环境通常是不适用的。在这里教大家一招解决这个问题。</p>
+<p>解决This version of the Android Support plugin for IntelliJ IDEA (or Android</p>
+<p>SDK不适配等问题</p>
+<p>首先在Android Studio新建一个工程或者使用之前的可以运行的工程，将以下四个文件复制到将要导入的工程中替换掉该工程的这几个文件。</p>
+<p><img src="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/1.png"></p>
+<p><img src="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/2.png"></p>
+<p>然后再打开该工程就可以正确运行。</p>
 ]]></content>
   </entry>
   <entry>
@@ -78,6 +84,12 @@
 <p>以下是ArrayAdapter常用的构造函数用于生成数组适配器：<br><span style="color:white;background:black;font-size:20px;font-family:仿宋;"><br>ArrayAdapter(Context context,int resourse,int textViewResId)<br>ArrayAdapter(Context context,int textViewResId,T[] object)<br>ArrayAdapter(Context context,int textViewResId,List&lt;<span style="color:red;">T</span>&gt;object)</span></p>
 <p>Context: 上下文环境，在Activity中一般使用this<br>resourse: 资源ID<br>textViewResId：文本视图资源ID，如下拉列表组件的ID<br>object： 泛指数据/集合</p>
 <p>ArrayAdapter使用步骤：<br><b>·</b> 定义一个数组或者集合用于存放ListView中的item的内容<br><b>·</b> 使用ArrayAdapter的构造方法创建一个ArrayAdapter对象。ArrayAdapter有很多构造函数的方法，最常用的就是带有三个参数的方法，第一个是上下文对象，第二个参数对象是ListView每一行（item）的布局资源ID；第三个参数就是数据源。<br><b>·</b> 使用ListView的setAdapter()方法绑定ArrayAdapter.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/test/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 ]]></content>
   </entry>
   <entry>
