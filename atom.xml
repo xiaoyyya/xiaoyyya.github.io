@@ -3,11 +3,11 @@
   <title>Lost</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://xhgm.club/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
-  <updated>2021-06-18T01:50:04.222Z</updated>
-  <id>http://example.com/</id>
+  <link href="https://xhgm.club/"/>
+  <updated>2021-07-16T08:55:05.713Z</updated>
+  <id>https://xhgm.club/</id>
   
   <author>
     <name>Xiaoy</name>
@@ -17,9 +17,97 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>java运算符</title>
+    <link href="https://xhgm.club/java%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>https://xhgm.club/java%E8%BF%90%E7%AE%97%E7%AC%A6/</id>
+    <published>2021-07-16T08:02:28.000Z</published>
+    <updated>2021-07-16T08:55:05.713Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;java运算符&quot;&gt;&lt;a href=&quot;#java运算符&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>word使用</title>
+    <link href="https://xhgm.club/%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xhgm.club/%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-07-15T07:47:02.000Z</published>
+    <updated>2021-07-15T08:02:00.864Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;标题的使用&quot;&gt;&lt;a href=&quot;#标题的使用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端面试</title>
+    <link href="https://xhgm.club/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/"/>
+    <id>https://xhgm.club/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/</id>
+    <published>2021-07-11T18:56:33.000Z</published>
+    <updated>2021-07-12T04:39:49.831Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前端性能优化&quot;&gt;&lt;a href=&quot;#前端性能优化&quot; class=&quot;headerlink&quot; title=&quot;前端性能优化&quot;&gt;&lt;/a&gt;前端性能优化&lt;/h1&gt;&lt;h3 id=&quot;页面内容方面&quot;&gt;&lt;a href=&quot;#页面内容方面&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Handler</title>
+    <link href="https://xhgm.club/Handler/"/>
+    <id>https://xhgm.club/Handler/</id>
+    <published>2021-06-22T06:22:07.000Z</published>
+    <updated>2021-06-22T07:22:02.020Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Android中的handler&lt;/p&gt;
+&lt;p&gt;1.handler的作用和概念&lt;/p&gt;
+&lt;p&gt;handler包含了线程队列和消息队列，实现异步消息处理机制。&lt;/p&gt;
+&lt;p&gt;a.运行在某个线程上，共享线程的消息队列&lt;/p&gt;
+&lt;p&gt;b.接收消息，调度消息，派发消息和处理消息&lt;/</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Android导入工程解决SDK不适配</title>
-    <link href="http://example.com/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/"/>
-    <id>http://example.com/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/</id>
+    <link href="https://xhgm.club/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/"/>
+    <id>https://xhgm.club/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/</id>
     <published>2021-06-18T00:26:28.000Z</published>
     <updated>2021-06-18T01:50:04.222Z</updated>
     
@@ -39,8 +127,8 @@
   
   <entry>
     <title>Docker</title>
-    <link href="http://example.com/Docker/"/>
-    <id>http://example.com/Docker/</id>
+    <link href="https://xhgm.club/Docker/"/>
+    <id>https://xhgm.club/Docker/</id>
     <published>2021-05-18T01:34:28.419Z</published>
     <updated>2021-06-15T06:30:55.655Z</updated>
     
@@ -59,18 +147,18 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/"/>
-    <id>http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/</id>
-    <published>2021-05-14T15:25:08.956Z</published>
-    <updated>2021-06-15T13:19:37.858Z</updated>
+    <title>Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</title>
+    <link href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/"/>
+    <id>https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/</id>
+    <published>2021-05-14T15:25:08.000Z</published>
+    <updated>2021-07-16T08:59:39.732Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）&quot;&gt;&lt;a href=&quot;#title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署</summary>
         
       
     
@@ -81,8 +169,8 @@
   
   <entry>
     <title>SQlite存储方式</title>
-    <link href="http://example.com/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/"/>
-    <id>http://example.com/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</id>
+    <link href="https://xhgm.club/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/"/>
+    <id>https://xhgm.club/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</id>
     <published>2021-05-04T01:52:20.000Z</published>
     <updated>2021-05-07T05:10:09.520Z</updated>
     
@@ -104,8 +192,8 @@
   
   <entry>
     <title>test</title>
-    <link href="http://example.com/test/"/>
-    <id>http://example.com/test/</id>
+    <link href="https://xhgm.club/test/"/>
+    <id>https://xhgm.club/test/</id>
     <published>2021-05-01T17:15:52.000Z</published>
     <updated>2021-05-01T17:16:59.467Z</updated>
     
@@ -125,8 +213,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/hello-world/"/>
-    <id>http://example.com/hello-world/</id>
+    <link href="https://xhgm.club/hello-world/"/>
+    <id>https://xhgm.club/hello-world/</id>
     <published>2021-05-01T06:17:27.716Z</published>
     <updated>2021-05-01T06:17:27.717Z</updated>
     

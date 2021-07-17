@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android导入工程解决SDK不适配</title>
+    <url>/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们在学习过程中经常会从网上下载一些开源的代码去学习，这个时候工程和我们所属的环境通常是不适用的。在这里教大家一招解决这个问题。</p>
+<p>解决This version of the Android Support plugin for IntelliJ IDEA (or Android</p>
+<p>SDK不适配等问题</p>
+<p>首先在Android Studio新建一个工程或者使用之前的可以运行的工程，将以下四个文件复制到将要导入的工程中替换掉该工程的这几个文件。</p>
+<p><img src="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/1.png"></p>
+<p><img src="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/2.png"></p>
+<p>然后再打开该工程就可以正确运行。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Docker</title>
     <url>/Docker/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程是基于CentOS7上安装和使用docker。本次使用的是在Windows自带的hyper-V中安装CentOS7并创建的虚拟机。</p>
@@ -44,6 +56,41 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Handler</title>
+    <url>/Handler/</url>
+    <content><![CDATA[<p>Android中的handler</p>
+<p>1.handler的作用和概念</p>
+<p>handler包含了线程队列和消息队列，实现异步消息处理机制。</p>
+<p>a.运行在某个线程上，共享线程的消息队列</p>
+<p>b.接收消息，调度消息，派发消息和处理消息</p>
+<p>c.实现消息异步处理</p>
+<p>handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thread和消息队列绑定在一起，然后可以传递消息和runnable对象到消息队列中，执行消息以后退出。</p>
+<p>Handler的作用是调度消息和runnable对象去被执行；使动作在不同的线程中被执行。</p>
+<p><img src="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg" alt="img"></p>
+<p>Android中对消息原型，消息队列，消息发送，消息循环，消息获取，消息派发，消息处理这几个部分进行了抽象，变成了四部分：Handler 、Massage、MassageQueue、Looper</p>
+<p>Massage:消息原型，包含消息描述和数据</p>
+<p>MassageQueue:消息队列</p>
+<p>Looper:完成消息循环</p>
+<p>Handler:驾驭整个消息系统模型，统领Massage,MassageQueue,Looper。</p>
+<p>Handler工作原理：</p>
+<p>sendMessage ：立即发送消息</p>
+<p>sendMessageDelayed：指定多少毫秒后发送消息。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>SQlite存储方式</title>
+    <url>/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>Android使用SQLite作为存储数据库，它是一个免费开源且与底层无关的数据库。<br>Android提供了创建和使用SQLite数据库的API</p>
+<p>LayoutInflater将布局XML文件实例化为其相应的视图对象</p>
+<p>ArrayAdapter数组适配器</p>
+<p>ArrayAdapter是一个比较简单的数组适配器，只能展示一行文字，无需自定义布局，使用系统提供的布局即可。<br>这个适配器可以为AdapterView提供视图，为您提供的数据对象集合中的每个对象返回视图，并且可以与基于列表的用户界面小部件（ListView或Spinner）一起使用。</p>
+<p><span style="color:white;background:black;font-size:20px;font-family:仿宋;">默认情况下，数组适配器通过对您提供的集合的每个数据对象调用Object.toString()来创建一个视图，并且将结果放置在TextView中。</span><br>您还可以自定义用于集合中数据对象的视图类型，要自定义数据对象使用的视图类型。</p>
+<p>以下是ArrayAdapter常用的构造函数用于生成数组适配器：<br><span style="color:white;background:black;font-size:20px;font-family:仿宋;"><br>ArrayAdapter(Context context,int resourse,int textViewResId)<br>ArrayAdapter(Context context,int textViewResId,T[] object)<br>ArrayAdapter(Context context,int textViewResId,List&lt;<span style="color:red;">T</span>&gt;object)</span></p>
+<p>Context: 上下文环境，在Activity中一般使用this<br>resourse: 资源ID<br>textViewResId：文本视图资源ID，如下拉列表组件的ID<br>object： 泛指数据/集合</p>
+<p>ArrayAdapter使用步骤：<br><b>·</b> 定义一个数组或者集合用于存放ListView中的item的内容<br><b>·</b> 使用ArrayAdapter的构造方法创建一个ArrayAdapter对象。ArrayAdapter有很多构造函数的方法，最常用的就是带有三个参数的方法，第一个是上下文对象，第二个参数对象是ListView每一行（item）的布局资源ID；第三个参数就是数据源。<br><b>·</b> 使用ListView的setAdapter()方法绑定ArrayAdapter.</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -62,28 +109,54 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Android导入工程解决SDK不适配</title>
-    <url>/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们在学习过程中经常会从网上下载一些开源的代码去学习，这个时候工程和我们所属的环境通常是不适用的。在这里教大家一招解决这个问题。</p>
-<p>解决This version of the Android Support plugin for IntelliJ IDEA (or Android</p>
-<p>SDK不适配等问题</p>
-<p>首先在Android Studio新建一个工程或者使用之前的可以运行的工程，将以下四个文件复制到将要导入的工程中替换掉该工程的这几个文件。</p>
-<p><img src="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/1.png"></p>
-<p><img src="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/2.png"></p>
-<p>然后再打开该工程就可以正确运行。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>SQlite存储方式</title>
-    <url>/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>Android使用SQLite作为存储数据库，它是一个免费开源且与底层无关的数据库。<br>Android提供了创建和使用SQLite数据库的API</p>
-<p>LayoutInflater将布局XML文件实例化为其相应的视图对象</p>
-<p>ArrayAdapter数组适配器</p>
-<p>ArrayAdapter是一个比较简单的数组适配器，只能展示一行文字，无需自定义布局，使用系统提供的布局即可。<br>这个适配器可以为AdapterView提供视图，为您提供的数据对象集合中的每个对象返回视图，并且可以与基于列表的用户界面小部件（ListView或Spinner）一起使用。</p>
-<p><span style="color:white;background:black;font-size:20px;font-family:仿宋;">默认情况下，数组适配器通过对您提供的集合的每个数据对象调用Object.toString()来创建一个视图，并且将结果放置在TextView中。</span><br>您还可以自定义用于集合中数据对象的视图类型，要自定义数据对象使用的视图类型。</p>
-<p>以下是ArrayAdapter常用的构造函数用于生成数组适配器：<br><span style="color:white;background:black;font-size:20px;font-family:仿宋;"><br>ArrayAdapter(Context context,int resourse,int textViewResId)<br>ArrayAdapter(Context context,int textViewResId,T[] object)<br>ArrayAdapter(Context context,int textViewResId,List&lt;<span style="color:red;">T</span>&gt;object)</span></p>
-<p>Context: 上下文环境，在Activity中一般使用this<br>resourse: 资源ID<br>textViewResId：文本视图资源ID，如下拉列表组件的ID<br>object： 泛指数据/集合</p>
-<p>ArrayAdapter使用步骤：<br><b>·</b> 定义一个数组或者集合用于存放ListView中的item的内容<br><b>·</b> 使用ArrayAdapter的构造方法创建一个ArrayAdapter对象。ArrayAdapter有很多构造函数的方法，最常用的就是带有三个参数的方法，第一个是上下文对象，第二个参数对象是ListView每一行（item）的布局资源ID；第三个参数就是数据源。<br><b>·</b> 使用ListView的setAdapter()方法绑定ArrayAdapter.</p>
+    <title>java运算符</title>
+    <url>/java%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<h2 id="java运算符"><a href="#java运算符" class="headerlink" title="java运算符"></a>java运算符</h2><ul>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>位运算符</li>
+<li>逻辑运算符</li>
+<li>赋值运算符</li>
+<li>其他运算符</li>
+</ul>
+<h6 id="1-算术运算符"><a href="#1-算术运算符" class="headerlink" title="1.算术运算符"></a>1.算术运算符</h6><p>+、-、*、/、%、++、–</p>
+<p>++a,–a:先进行自增或自减运算，在进行表达式运算</p>
+<p>a++、a–：先进行表达式运算，在进行自增或者自减运算</p>
+<h6 id="2-关系运算符"><a href="#2-关系运算符" class="headerlink" title="2.关系运算符"></a>2.关系运算符</h6><p>==、！=、&gt;、&lt;、&gt;=、&lt;=</p>
+<h6 id="3-位运算符"><a href="#3-位运算符" class="headerlink" title="3.位运算符"></a>3.位运算符</h6><p>java定义了位运算符，应用于整数类型（int),长整型，短整型，字符型，和字节型等类型。</p>
+<p>位运算符作用在所有位上，并且按位运算，假设a=60,b=13他们的二进制表示如下：</p>
+<p>A=00 11 1100</p>
+<p>B=0000 1101</p>
+<p>a&amp;b=0000 11 00 (11为1)</p>
+<p>a|b=0011 11 01（00为0）</p>
+<p>a^b=0011 0001（对应位相同就是0，不同为1）</p>
+<p>~A=1100 0011（按位取反）</p>
+<p>&lt;&lt;按位左移运算符 A&lt;&lt;2得到 1111 00 00</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;按位右移 A&gt;&gt;2 得到 00001111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="4-逻辑运算符"><a href="#4-逻辑运算符" class="headerlink" title="4.逻辑运算符"></a>4.逻辑运算符</h6><p>&amp;&amp;、||、!</p>
+<h6 id="5-赋值运算符"><a href="#5-赋值运算符" class="headerlink" title="5.赋值运算符"></a>5.赋值运算符</h6><p>=:右边操作数的值赋给左边操作数</p>
+<p>+=,加和赋值操作，左边操作数+右边操作数赋值给左边</p>
+<p>-=：减和赋值操作，左边操作数减去右边赋值给左边</p>
+<p>*=：乘和操作，左边乘以右边赋值给左边</p>
+<p>/=：除和操作，左边除以右边赋值给左边</p>
+<p>(%)=：取模和赋值操作符，左边和右边取模赋值给左边 C%=A等价C=C%A</p>
+<p>&lt;&lt;=：左移位赋值操作符，C&lt;&lt;=2等价C=C&lt;&lt;2</p>
+<p>,&gt;&gt;=,</p>
+<p>&amp;=:按位与赋值操作符 C&amp;=等价于C=C&amp;2</p>
+<p>^=:a按位异或操作符 C^=2等价于C=C^2</p>
+<p>|=:按位或操作符 C|=2等价于 C=C|2</p>
+<h6 id="6-条件运算符（？：）"><a href="#6-条件运算符（？：）" class="headerlink" title="6.条件运算符（？：）"></a>6.条件运算符（？：）</h6><p>​    条件运算符也成为三元运算。该运算符有三个操作数，并且需要判断布尔表达式的值，改运算符的主要是决定那个值应该赋值给变量。</p>
+<p>​    variable x=(expresion )?value if true:value if false</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Test&#123;</span><br><span class="line">	public static void main(String args)&#123;</span><br><span class="line">		int a,b;</span><br><span class="line">		a&#x3D;10;</span><br><span class="line">		b&#x3D;(a&#x3D;&#x3D;1)?20:30;</span><br><span class="line">		</span><br><span class="line">		system.out.print(&quot;value of b is&quot;+b);</span><br><span class="line">		</span><br><span class="line">		b&#x3D;(a&#x3D;&#x3D;10)?20:30;</span><br><span class="line">		system.out.print(&quot;value of b is&quot;+b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="7-instanceof-运算符"><a href="#7-instanceof-运算符" class="headerlink" title="7.instanceof 运算符"></a>7.instanceof 运算符</h6><p>​    该运算符用于操作对象实例，检查改对象是否是一个特定类型（类类型或者接口类型）</p>
+<p>​    instanceof运算符使用格式：</p>
+<p>​            （Object reference variable) instanceof (class\interface type)</p>
+<p>如果运算符左侧变量所指的对象，是操作符右侧类或接口(class/interface)的一个对象，那么结果为真。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String name &#x3D; &quot;James&quot;;</span><br><span class="line">boolean result &#x3D; name instanceof String; &#x2F;&#x2F; 由于 name 是 String 类型，所以返回真</span><br></pre></td></tr></table></figure>
+
 ]]></content>
   </entry>
   <entry>
@@ -93,10 +166,184 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>word使用</title>
+    <url>/%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="标题的使用"><a href="#标题的使用" class="headerlink" title="标题的使用"></a>标题的使用</h1><ol>
+<li>选择列表级别</li>
+<li>定义新的多级列表</li>
+<li>将级别列表链接到样式，选择标题</li>
+<li>鼠标移至标题，点击修改，调整标题的字体和字号</li>
+<li>需要导入目录的，回车下一行，插入分页符</li>
+<li>双击页脚位置，就到了设计，将链接到前一节取消，并将起始页设为1</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>前端面试</title>
+    <url>/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h1><h3 id="页面内容方面"><a href="#页面内容方面" class="headerlink" title="页面内容方面"></a>页面内容方面</h3><p>1.通过文件合并，css雪碧图，避免使用base64等方式减少http请求，避免过多请求造成等待；</p>
+<p>2.通过DNS缓存机制来减少DNS的查询次数</p>
+<p>3.通过设置缓存策略，对常用的不变资源进行缓存；</p>
+<p>4.通过延迟加载的方式，来减少页面首屏加载时需要请求的资源，延迟加载资源当用户需要访问时再去加载；</p>
+<p>5.通过用户行为，对某些资源使用预加载的方式，提提高用户需要访问资源时的响应速度</p>
+<h3 id="服务器方面"><a href="#服务器方面" class="headerlink" title="服务器方面"></a>服务器方面</h3><p>1.使用CDN服务提高用户对于资源请求时的响应速度</p>
+<p>2.服务器端自用Gzip，Deflate等方式对于传输资源进行压缩，减少传输文件的体积</p>
+<p>3.尽可能减小cookie的大小，并且通过将静态资源分配到其他域名下来避免静态资源请求时携带不必要的cookie</p>
+<h1 id="什么是webp"><a href="#什么是webp" class="headerlink" title="什么是webp"></a>什么是webp</h1><p>webp是谷歌开发啊的一种新的突破屙屎，它支持有损和无损压缩，使用直接色的点阵图，体积更小</p>
+<h3 id="浏览器如何判断是否支持webp"><a href="#浏览器如何判断是否支持webp" class="headerlink" title="浏览器如何判断是否支持webp?"></a>浏览器如何判断是否支持webp?</h3><p>通过创建image对象，将其src属性设置成webp格式图片，然后onload事件中获取图片宽高，假如可以获取，就是支持，不能获取就是不能支持</p>
+<h1 id="常见浏览器内核"><a href="#常见浏览器内核" class="headerlink" title="常见浏览器内核"></a>常见浏览器内核</h1><p>Trident:IE浏览器</p>
+<p>Gecko:firefox浏览器内核</p>
+<p>Presto:Opera浏览器内核</p>
+<p>Webkit:Safari浏览器</p>
+<p>Blink;谷歌</p>
+<p>UC：webkit+trident</p>
+<p>百度，世界之窗：IE</p>
+<p>搜狗，QQ浏览器：webkit+trident</p>
+<p>360,猎豹：IE+blink</p>
+<h1 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h1><p>BFC（BLOCK FORMAT Context)块级格式化上下文，是页面盒模型中的一种CSS渲染模式，相当于一个独立的容器，里面的元素和外部的互不影响</p>
+<p>创建BFC的方式有：html根元素，float浮动，绝对定位，overflow不为visible,display为表格布局或者弹性布局</p>
+<p>BFC作用:清楚浮动，防止同一BFC容器中的相邻元素和外边距重叠</p>
+<h2 id="如何让一个div水平垂直居中？"><a href="#如何让一个div水平垂直居中？" class="headerlink" title="如何让一个div水平垂直居中？"></a>如何让一个div水平垂直居中？</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;child&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">div.parent&#123;display:flex;</span><br><span class="line">			justify-content: center;</span><br><span class="line">			aligen-items: center;</span><br><span class="line">&#125;</span><br><span class="line">div.parent&#123;</span><br><span class="line">	position:relative;</span><br><span class="line">&#125;</span><br><span class="line">div.child&#123;</span><br><span class="line">	position:absolute;</span><br><span class="line">	left:50%;</span><br><span class="line">	top:50%;</span><br><span class="line">	transform: translate(-50%,-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="重绘和回流（Repaint、Reflow-以及如何进行优化"><a href="#重绘和回流（Repaint、Reflow-以及如何进行优化" class="headerlink" title="重绘和回流（Repaint、Reflow)以及如何进行优化"></a>重绘和回流（Repaint、Reflow)以及如何进行优化</h2><h4 id="浏览器渲染机制"><a href="#浏览器渲染机制" class="headerlink" title="浏览器渲染机制"></a>浏览器渲染机制</h4><ol>
+<li><p>浏览器采用流式布局模式（flow based layout)</p>
+</li>
+<li><p>浏览器会把HTML解释成Dom,把css解释成cssom，dom和cssom合并产生了渲染树</p>
+</li>
+<li><p>有了renderTree,我们就知道了所有节点的样式，然后后计算他们再页面上的大小和位置，最后把节点绘制到页面上</p>
+</li>
+<li><p>由于浏览器使用流式布局，对于render tree的计算通常只需遍历一次，但是table以及内部元素可能需要重复计算，这也是避免table布局的原因</p>
+<h4 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h4><p>由于节点的集合属性发生变化或者样式改变而不会影响布局的。称为重绘。</p>
+<h4 id="回流"><a href="#回流" class="headerlink" title="回流"></a>回流</h4><p>回流就是布局或者集合属性需要改变称为回流。回流是影响浏览器性能的主要原因，因为他的变化会涉及到部分页面的布局更新。一个元素回流可能会造成其子元素以及dom中紧随其后的系欸但的重绘。回流必重绘，重绘不一定引发回流。</p>
+<h4 id="浏览器优化"><a href="#浏览器优化" class="headerlink" title="浏览器优化"></a>浏览器优化</h4><p>现在浏览器多使用队列机制来批量更新布局，浏览器会把修改操作放在队列里，至少一个浏览器刷新（16.6ms）才会清空队列。但是获取布局信息的时候，队列中肯会有影响这些属性或者方法返回值的操作，即使没有，浏览器也会强制清空队列，触发回流和重绘来确保返回值的正确性。</p>
+<h4 id="减少重绘和回流"><a href="#减少重绘和回流" class="headerlink" title="减少重绘和回流"></a>减少重绘和回流</h4><ol>
+<li><h6 id="css"><a href="#css" class="headerlink" title="css"></a>css</h6><ul>
+<li>使用transform代替top;</li>
+<li>使用visibility替换display: none,前者引起重绘，后者引起回流</li>
+<li>避免使用table布局</li>
+<li>尽可能正在DOM树末端改变class</li>
+<li>css硬件加速</li>
+<li>避免使用css表达式</li>
+</ul>
+</li>
+<li><p>javascript</p>
+<p>​    避免频繁操作样式，修改class最好</p>
+<p>​    避免频繁操作DOM，合并多次修改为一次</p>
+<p>避免频繁读取引发回流、重绘属性，将结果缓存</p>
+<p>​    对复杂动画使用绝对定位，使它脱离文档流</p>
+<p>​    </p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="比较分析opacity-0、visibility-hidden、display-none优劣和适用场景"><a href="#比较分析opacity-0、visibility-hidden、display-none优劣和适用场景" class="headerlink" title="比较分析opacity:0、visibility:hidden、display:none优劣和适用场景"></a>比较分析opacity:0、visibility:hidden、display:none优劣和适用场景</h2><p>1.display:none 不占用空间、不能点击，会引起回流，子元素不影响</p>
+<p>2.visibility: hidden 占据空间，不能点击，会引起重绘，子元素可设置visible进行显示</p>
+<p>3.opacity:0 占据空间，可以点击，引起重绘，子元素不影响</p>
+<h2 id="简单描述css盒模型"><a href="#简单描述css盒模型" class="headerlink" title="简单描述css盒模型"></a>简单描述css盒模型</h2><p>盒子由margin,border,padding,content组成</p>
+<p>标准盒模型：box-sizing:content-box</p>
+<p>IE盒模型：box-sizing:border-box</p>
+<h2 id="简述Rem以及转换原理"><a href="#简述Rem以及转换原理" class="headerlink" title="简述Rem以及转换原理"></a>简述Rem以及转换原理</h2><p>rem是css3的相对长队单位，是指相对于根元素html的font-size计算大小。</p>
+<p>默认根元素的font-size都是16px,假如像设置12px的字体大小也就是12px/16px=0.75rem.</p>
+<ul>
+<li>由于px是相对固定单位，字号大小直接被锁定，无法随着浏览器进行缩放</li>
+<li>rem直接相对于根元素html,避开层级关系，移动端新型浏览器对其支持较好</li>
+</ul>
+<h2 id="简单描述伪类和伪元素"><a href="#简单描述伪类和伪元素" class="headerlink" title="简单描述伪类和伪元素"></a>简单描述伪类和伪元素</h2><h4 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h4><p>伪类用于当前已有元素处于某种状态时，为其添加对应的样式，这个状态时根据用户行为变化而变化的，比如说：hover.他只有处于DOM树无法描述的状态才能为元素添加样式，所以称为伪类。</p>
+<h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4><p>伪元素用于创建一些原本不在文档树中的元素，并为其添加样式，比如：：：before。虽然用户可以看见这些内容，但是他不在文档树中</p>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>伪类的操作对象是文档树中已存在元素，而伪元素时创建一个文档树外的元素、</p>
+<p>CSS中：：表示伪元素，：表示伪类</p>
+<h2 id="行内元素的margin和padding"><a href="#行内元素的margin和padding" class="headerlink" title="行内元素的margin和padding"></a>行内元素的margin和padding</h2><ul>
+<li>水平方向：水平方向上有效</li>
+<li>垂直方向：垂直方向上，都无效。（<code>padding-top</code> 和 <code>padding-bottom</code> 会显示出效果，但是高度不会撑开，不会对周围元素有影响）</li>
+</ul>
+<h2 id="css中哪些属性可以继承"><a href="#css中哪些属性可以继承" class="headerlink" title="css中哪些属性可以继承"></a>css中哪些属性可以继承</h2><p>1.字体系列属性</p>
+<ul>
+<li>font-size</li>
+<li>font-family</li>
+<li>font-weight</li>
+<li>font-style</li>
+</ul>
+<p>2.文本系列属性</p>
+<ul>
+<li>text-indent</li>
+<li>text-aligen</li>
+<li>line-hight</li>
+<li>word-spacing</li>
+<li>letter-spacing</li>
+<li>color</li>
+</ul>
+<p>其他</p>
+<ul>
+<li>cursor</li>
+<li>visibility</li>
+</ul>
+<h2 id="用纯CSS创建一个三角形"><a href="#用纯CSS创建一个三角形" class="headerlink" title="用纯CSS创建一个三角形"></a>用纯CSS创建一个三角形</h2><p>#demo{</p>
+<p>​    width: 0;</p>
+<p>​    height: 0;</p>
+<p>​    border-width: 20;</p>
+<p>​    border-style: “solid”;</p>
+<p>​    border-color: transparent transparent red transparent;</p>
+<p>}</p>
+<h2 id="min-width、max-width和min-height-max-height属性覆盖规则"><a href="#min-width、max-width和min-height-max-height属性覆盖规则" class="headerlink" title="min-width、max-width和min-height\max-height属性覆盖规则"></a>min-width、max-width和min-height\max-height属性覆盖规则</h2><p>1.max-width会覆盖width,即使width时行内样式或者设置了！import</p>
+<p>2.min-width会覆盖max-width。</p>
+<h1 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h1><h2 id="介绍下-Set、Map、WeakSet-和-WeakMap-的区别？"><a href="#介绍下-Set、Map、WeakSet-和-WeakMap-的区别？" class="headerlink" title="介绍下 Set、Map、WeakSet 和 WeakMap 的区别？"></a>介绍下 Set、Map、WeakSet 和 WeakMap 的区别？</h2><h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><ol>
+<li>成员不能重复</li>
+<li>只有键值，没有键名，类似数组</li>
+<li>可以遍历，有add,delete,has</li>
+</ol>
+<h4 id="Weakset"><a href="#Weakset" class="headerlink" title="Weakset"></a>Weakset</h4><ol>
+<li>成员都是对像</li>
+<li>成员都是弱引用，随时可以小时。可以用来保存DOM节点，不容易造成内存泄露</li>
+<li>不能遍历，有啊大大，delete，哈桑，方法</li>
+</ol>
+<h4 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h4><ol>
+<li><p>​    只接受对象为键名，null除外，不能接受其他类型的值作为键名</p>
+</li>
+<li><p>键名指向对象，不计入垃圾回收机制</p>
+</li>
+<li><p>不能遍历 方法get,set,has,delete</p>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><ol>
+<li>键值对集合，类似于集合</li>
+<li>可以遍历</li>
+</ol>
+</li>
+</ol>
+<h1 id="ES5-ES6-的继承除了写法以外还有什么区别？"><a href="#ES5-ES6-的继承除了写法以外还有什么区别？" class="headerlink" title="ES5/ES6 的继承除了写法以外还有什么区别？"></a>ES5/ES6 的继承除了写法以外还有什么区别？</h1><ol>
+<li>class声明会提升，但不会初始化复制</li>
+<li>class声明内部启用严格模式</li>
+<li>class的所有方法都是不可枚举</li>
+<li>class的所有方法都是没有原型prototype，不能用new来调用</li>
+<li>必须使用new来调用class</li>
+<li>class内部无法重写类名</li>
+</ol>
+<h1 id="JS-异步解决方案的发展历程以及优缺点。"><a href="#JS-异步解决方案的发展历程以及优缺点。" class="headerlink" title="JS 异步解决方案的发展历程以及优缺点。"></a>JS 异步解决方案的发展历程以及优缺点。</h1><h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>优点：解决了同步问题</p>
+<p>缺点：回调地狱，并不能使用 try catch捕获错误，不能return</p>
+<h4 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h4><p>优点：解决了回调地狱的问题</p>
+<p>缺点：无法取消promise，错误需要通过回调函数来捕获</p>
+<h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><p>特点：可以控制函数执行</p>
+<h4 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h4><p>优点：代码清晰，不用像promise一样写一大堆then链，解决了回调地狱问题</p>
+<p>缺点：await将一部代码改造成同步代码，假如多个异步操作没有依赖而使用await会导致性能低。</p>
+<h2 id="实现一个sleep函数"><a href="#实现一个sleep函数" class="headerlink" title="实现一个sleep函数"></a>实现一个sleep函数</h2><p>//promise</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function sleep1(time)&#123;</span><br><span class="line">	return new Promise(resovle&#x3D;&gt;&#123;</span><br><span class="line">		setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">		resovle();</span><br><span class="line">		&#125;,time);</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sleep1(1000).then(()&#x3D;&gt;console.log(&quot;sleep1&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">某公司 1 到 12 月份的销售额存在一个对象里面 如下：&#123;1:222, 2:123, 5:888&#125;，请把数据处理为如下结构：[222, 123, null, null, 888, null, null, null, null, null, null, null]</span><br><span class="line"></span><br><span class="line">function convert(obj)&#123;</span><br><span class="line">	return 	Array.from(&#123;length:12&#125;).map((item,index)&#x3D;&gt;obj[index]||null).slice(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="call-和-apply-的区别是什么，哪个性能更好一些"><a href="#call-和-apply-的区别是什么，哪个性能更好一些" class="headerlink" title="call 和 apply 的区别是什么，哪个性能更好一些"></a>call 和 apply 的区别是什么，哪个性能更好一些</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>Function.prototype.apply</code> 和 <code>Function.prototype.call</code> 的作用是一样的，区别在于传入参数的不同；</li>
+</ol>
+<p>2.第一个参数都是指定函数体内this的指向</p>
+<p>3.第二个参数开始不同，applay是传入带下标的集合，数组或者类数组apply把它传给函数作为参数，call从第二个参数开是是不固定的，都会传给函数作为参数</p>
+<p>4.call比apply性能好一些</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</title>
     <url>/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）"><a href="#title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）" class="headerlink" title="title: Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）"></a>title: Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</h2><p>date: 2021-05-14 23:25:08<br>tags:</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
 <p>安装包提取地址：链接：<a href="https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA">https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA</a><br>提取码：y1y2<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
 <p> <b>参考文章：<a href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
 <h1 id="一、XSHELL下载与-WinSCP安装"><a href="#一、XSHELL下载与-WinSCP安装" class="headerlink" title="一、XSHELL下载与 WinSCP安装"></a>一、XSHELL下载与 WinSCP安装</h1><pre><code>XShell 下载地址：https://www.netsarang.com/zh/free-for-home-school/

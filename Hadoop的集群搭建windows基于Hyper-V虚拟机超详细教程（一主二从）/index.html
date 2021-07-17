@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> Lost</title>
+      <title>Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从） |  Lost</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -51,10 +51,20 @@
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
       <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" class="article-date">
-  <time datetime="2021-05-14T15:25:08.956Z" itemprop="datePublished">2021-05-14</time>
+  <time datetime="2021-05-14T15:25:08.000Z" itemprop="datePublished">2021-05-14</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
@@ -85,8 +95,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）"><a href="#title-Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）" class="headerlink" title="title: Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）"></a>title: Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</h2><p>date: 2021-05-14 23:25:08<br>tags:</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
 <p>安装包提取地址：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA">https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA</a><br>提取码：y1y2<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
 <p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
 <h1 id="一、XSHELL下载与-WinSCP安装"><a href="#一、XSHELL下载与-WinSCP安装" class="headerlink" title="一、XSHELL下载与 WinSCP安装"></a>一、XSHELL下载与 WinSCP安装</h1><pre><code>XShell 下载地址：https://www.netsarang.com/zh/free-for-home-school/
@@ -349,7 +358,7 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 <p><img src="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/44.png"></p>
 <p>到此本章教程已结束，感谢阅读！</p>
 <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h2><p>本教程是基于CentOS7上安装和使用docker。本次使用的是在Windows自带的hyper-V中安装CentOS7并创建的虚拟机。</p>
-<p>安装CentOs创建虚拟机教程可查看上一篇：<a target="_blank" rel="noopener" href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</a></p>
+<p>安装CentOs创建虚拟机教程可查看上一篇：<a href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</a></p>
 <h6 id="前提条件："><a href="#前提条件：" class="headerlink" title="前提条件："></a>前提条件：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目前，CentOS 仅发行版本中的内核支持 Docker。</span><br><span class="line">1、Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。</span><br><span class="line">2、Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统内核版本为 2.6.32-431 或者更高版本。</span><br></pre></td></tr></table></figure>
 
 <h2 id="1-1查看CentOS内核"><a href="#1-1查看CentOS内核" class="headerlink" title="1.1查看CentOS内核"></a>1.1查看CentOS内核</h2><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。</p>
@@ -483,7 +492,7 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 

@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>归档: 2021 |  Lost</title>
+      <title>Handler |  Lost</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -43,257 +43,224 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <ul class="ads">
+  <article
+  id="post-Handler"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-        <li>
-            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/ezctH6FU">
-                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ad_1.jpg" width="300" alt="腾讯云限时秒杀">
-            </a>
-        </li>
-    
-        <li>
-            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/kvO7hb43">
-                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ad_2.jpg" width="300" alt="云服务器全球购低至2折">
-            </a>
-        </li>
-    
-</ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">2021</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Handler
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/Handler/" class="article-date">
+  <time datetime="2021-06-22T06:22:07.000Z" itemprop="datePublished">2021-06-22</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">298</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-categories">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/java%E8%BF%90%E7%AE%97%E7%AC%A6/" class="archive-article-date">
-  <time datetime="2021-07-16T08:02:28.000Z" itemprop="datePublished">07/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/java%E8%BF%90%E7%AE%97%E7%AC%A6/"
-    >java运算符</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-word">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  <time datetime="2021-07-15T07:47:02.000Z" itemprop="datePublished">07/15</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/%E4%BD%BF%E7%94%A8/"
-    >word使用</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="archive-article-date">
-  <time datetime="2021-07-11T18:56:33.000Z" itemprop="datePublished">07/12</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/"
-    >前端面试</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Handler/" class="archive-article-date">
-  <time datetime="2021-06-22T06:22:07.000Z" itemprop="datePublished">06/22</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/Handler/"
-    >Handler</a> 
-</h2>
+  <p>Android中的handler</p>
+<p>1.handler的作用和概念</p>
+<p>handler包含了线程队列和消息队列，实现异步消息处理机制。</p>
+<p>a.运行在某个线程上，共享线程的消息队列</p>
+<p>b.接收消息，调度消息，派发消息和处理消息</p>
+<p>c.实现消息异步处理</p>
+<p>handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thread和消息队列绑定在一起，然后可以传递消息和runnable对象到消息队列中，执行消息以后退出。</p>
+<p>Handler的作用是调度消息和runnable对象去被执行；使动作在不同的线程中被执行。</p>
+<p><img src="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg" alt="img"></p>
+<p>Android中对消息原型，消息队列，消息发送，消息循环，消息获取，消息派发，消息处理这几个部分进行了抽象，变成了四部分：Handler 、Massage、MassageQueue、Looper</p>
+<p>Massage:消息原型，包含消息描述和数据</p>
+<p>MassageQueue:消息队列</p>
+<p>Looper:完成消息循环</p>
+<p>Handler:驾驭整个消息系统模型，统领Massage,MassageQueue,Looper。</p>
+<p>Handler工作原理：</p>
+<p>sendMessage ：立即发送消息</p>
+<p>sendMessageDelayed：指定多少毫秒后发送消息。</p>
  
-
-    </header>
-    
-    
-  </div>
-</article>
+      <!-- reward -->
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/" class="archive-article-date">
-  <time datetime="2021-06-18T00:26:28.000Z" itemprop="datePublished">06/18</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/"
-    >Android导入工程解决SDK不适配</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Docker/" class="archive-article-date">
-  <time datetime="2021-05-18T01:34:28.419Z" itemprop="datePublished">05/18</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/Docker/"
-    >Docker</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/" class="archive-article-date">
-  <time datetime="2021-05-14T15:25:08.000Z" itemprop="datePublished">05/14</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/"
-    >Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  <time datetime="2021-05-04T01:52:20.000Z" itemprop="datePublished">05/04</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/"
-    >SQlite存储方式</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/test/" class="archive-article-date">
-  <time datetime="2021-05-01T17:15:52.000Z" itemprop="datePublished">05/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/test/"
-    >test</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/hello-world/" class="archive-article-date">
-  <time datetime="2021-05-01T06:17:27.716Z" itemprop="datePublished">05/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
+    
 
-  
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xhgm.club/Handler/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            前端面试
+          
+        </div>
+      </a>
+    
+    
+      <a href="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Android导入工程解决SDK不适配</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -445,6 +412,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
