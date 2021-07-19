@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;xhgm.club&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="前言本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。 安装包提取地址：链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1kYED6eiV5LZyc9IF0vZfxA提取码：y1y2复制这段内容后打开百度网盘手机App，操作更方便哦  参考文章：Hadoop的集群搭建windows基于V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）">
+<meta property="og:url" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/index.html">
+<meta property="og:site_name" content="Lost">
+<meta property="og:description" content="前言本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。 安装包提取地址：链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1kYED6eiV5LZyc9IF0vZfxA提取码：y1y2复制这段内容后打开百度网盘手机App，操作更方便哦  参考文章：Hadoop的集群搭建windows基于V">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/1.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/2.jpg">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/2.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/3.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/4.jpg">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/4.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/5.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/6.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/7.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/10.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/9.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/11.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/14.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210512111842188.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021051211191421.png#pic_center">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/17.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/18.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/20.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/21.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/23.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/24.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/25.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/27.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/28.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/29.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/30.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210512120313541.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/31.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/32.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/33.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/34.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/35.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/36.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/38.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/47.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/45.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/46.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/37.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/39.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/40.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/48.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/49.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210512154150632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/41.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/42.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/43.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/44.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/59.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/57.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/58.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/53.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/56.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/57.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/60.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/64.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/65.png">
+<meta property="og:image" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/66.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8504906-bea4002f5278c143.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp">
+<meta property="article:published_time" content="2021-05-14T15:25:08.000Z">
+<meta property="article:modified_time" content="2021-07-16T08:59:39.732Z">
+<meta property="article:author" content="Xiaoy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center">
+
+
+<link rel="canonical" href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;xhgm.club&#x2F;Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89&#x2F;&quot;,&quot;path&quot;:&quot;Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）&#x2F;&quot;,&quot;title&quot;:&quot;Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从） | Lost</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lost</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81XSHELL%E4%B8%8B%E8%BD%BD%E4%B8%8E-WinSCP%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">一、XSHELL下载与 WinSCP安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8Windows%E8%87%AA%E5%B8%A6%E7%9A%84hyper-V%E4%B8%AD%E5%AE%89%E8%A3%85CentOS7%E5%B9%B6%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AECentOS7"><span class="nav-number">4.</span> <span class="nav-text">三、安装并配置CentOS7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E5%AE%89%E8%A3%85CentOS7"><span class="nav-number">4.1.</span> <span class="nav-text">3.1安装CentOS7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E9%85%8D%E7%BD%AECentOS"><span class="nav-number">4.2.</span> <span class="nav-text">3.2配置CentOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1%E6%9B%B4%E6%96%B0%E4%B8%80%E4%B8%8Byum%E6%BA%90"><span class="nav-number">4.2.1.</span> <span class="nav-text">3.2.1更新一下yum源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1%E6%9B%B4%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0"><span class="nav-number">4.2.2.</span> <span class="nav-text">3.2.1更改主机名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3%E4%BF%AE%E6%94%B9hosts%E6%96%87%E4%BB%B6"><span class="nav-number">4.2.3.</span> <span class="nav-text">3.2.3修改hosts文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4%E5%88%9B%E5%BB%BAHadoopTools%E6%96%87%E4%BB%B6%E5%A4%B9-%E8%A7%A3%E5%8E%8Bhadoop"><span class="nav-number">4.2.4.</span> <span class="nav-text">3.2.4创建HadoopTools文件夹,解压hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-5%E9%85%8D%E7%BD%AEJDK"><span class="nav-number">4.2.5.</span> <span class="nav-text">3.2.5配置JDK</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A4%8D%E5%88%B6CenyOS%E4%B8%BB%E6%9C%BA%EF%BC%8C%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="nav-number">5.</span> <span class="nav-text">四、复制CenyOS主机，搭建集群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1%E5%A4%8D%E5%88%B6%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">5.1.</span> <span class="nav-text">4.1复制虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2%E9%85%8D%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0%E4%BB%A5%E5%8F%8A%E4%B8%BB%E6%9C%BA-IP-%E4%BF%A1%E6%81%AF"><span class="nav-number">5.2.</span> <span class="nav-text">4.2配置主机名称以及主机 IP 信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3%E6%B5%8B%E8%AF%95%E9%9B%86%E7%BE%A4%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="nav-number">5.3.</span> <span class="nav-text">4.3测试集群连通性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%A8Xshell%E7%AE%A1%E7%90%86%E4%B8%89%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">五、用Xshell管理三台虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%89%93%E5%BC%80Xshell%E8%BD%AF%E4%BB%B6%EF%BC%8C%E7%82%B9%E5%87%BB%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D"><span class="nav-number">6.1.</span> <span class="nav-text">5.1.打开Xshell软件，点击新建会话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E5%9C%A8xshell%E4%B8%AD%E5%88%B6%E4%BD%9C%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 在xshell中制作免密码登陆</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AEHadoop"><span class="nav-number">7.</span> <span class="nav-text">六、配置Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1%E4%BF%AE%E6%94%B9hadoop-env-sh"><span class="nav-number">7.1.</span> <span class="nav-text">6.1修改hadoop-env.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-%E4%BF%AE%E6%94%B9yarn-env-sh"><span class="nav-number">7.2.</span> <span class="nav-text">6.2 修改yarn-env.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3%E4%BF%AE%E6%94%B9core-site-xml"><span class="nav-number">7.3.</span> <span class="nav-text">6.3修改core-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4%E4%BF%AE%E6%94%B9mapred-site-xml"><span class="nav-number">7.4.</span> <span class="nav-text">6.4修改mapred-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-5%E4%BF%AE%E6%94%B9yarn-site-xml"><span class="nav-number">7.5.</span> <span class="nav-text">6.5修改yarn-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-6%E4%BF%AE%E6%94%B9slaves"><span class="nav-number">7.6.</span> <span class="nav-text">6.6修改slaves</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-7%E5%BB%BA%E7%AB%8Bhadoop-tmp%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">7.7.</span> <span class="nav-text">6.7建立hadoop-tmp文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-8%E6%8B%B7%E8%B4%9D-Hadoop-%E5%88%B0-y1-%E5%92%8C-y2-%E4%B8%AD"><span class="nav-number">7.8.</span> <span class="nav-text">6.8拷贝 Hadoop 到 y1 和 y2 中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E3%80%81%E5%90%AF%E5%8A%A8HDFS"><span class="nav-number">8.</span> <span class="nav-text">七、配置、格式化、启动HDFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1%E9%85%8D%E7%BD%AEhdfs-site-xml"><span class="nav-number">8.1.</span> <span class="nav-text">7.1配置hdfs-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2%E8%AF%A5%E5%91%BD%E4%BB%A4%E5%8F%AA%E8%83%BD%E5%9C%A8master%E4%B8%8A%E6%89%A7%E8%A1%8C%EF%BC%8C%E4%B8%94%E5%8F%AA%E8%83%BD%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%EF%BC%8C%E4%B8%8D%E5%8F%AF%E5%A4%9A%E6%AC%A1%E6%89%A7%E8%A1%8C%E3%80%82"><span class="nav-number">8.2.</span> <span class="nav-text">7.2该命令只能在master上执行，且只能执行一次，不可多次执行。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3%E5%90%AF%E5%8A%A8NameNode"><span class="nav-number">8.3.</span> <span class="nav-text">7.3启动NameNode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4%E5%90%AF%E5%8A%A8DataNode"><span class="nav-number">8.4.</span> <span class="nav-text">7.4启动DataNode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5%E5%90%AF%E5%8A%A8SecondaryNameNode"><span class="nav-number">8.5.</span> <span class="nav-text">7.5启动SecondaryNameNode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-6HDFS%E4%B8%8A%E6%B5%8B%E8%AF%95%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E3%80%81%E4%B8%8A%E4%BC%A0%E3%80%81%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-number">8.6.</span> <span class="nav-text">7.6HDFS上测试创建目录、上传、下载文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-7%E4%BB%8EHDFS%E4%B8%8A%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="nav-number">8.7.</span> <span class="nav-text">7.7从HDFS上下载文件到本地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-8%E5%90%AF%E5%8A%A8Resourcemanager"><span class="nav-number">8.8.</span> <span class="nav-text">7.8启动Resourcemanager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-9%E5%90%AF%E5%8A%A8nodemanager"><span class="nav-number">8.9.</span> <span class="nav-text">7.9启动nodemanager</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%90%AF%E5%8A%A8-Hadoop-%E9%9B%86%E7%BE%A4"><span class="nav-number">9.</span> <span class="nav-text">八、启动 Hadoop 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8-Hadoop-%E9%9B%86%E7%BE%A4"><span class="nav-number">9.1.</span> <span class="nav-text">8.1一行命令启动 Hadoop 集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE-http-192-168-123-10-50070-%E6%9F%A5%E7%9C%8B%E5%90%AF%E5%8A%A8%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%E3%80%82"><span class="nav-number">9.2.</span> <span class="nav-text">8.2用宿主机浏览器访问 http:&#x2F;&#x2F;192.168.123.10:50070 查看启动是否成功。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3%E7%99%BB%E9%99%86yarn%E7%9A%84WebUI-http-192-168-123-10-8088"><span class="nav-number">9.3.</span> <span class="nav-text">8.3登陆yarn的WebUI http:&#x2F;&#x2F;192.168.123.10:8088&#x2F;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E8%BF%90%E8%A1%8CMapReduce-Job"><span class="nav-number">10.</span> <span class="nav-text">九、运行MapReduce Job</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%94%A8%E7%9A%84Input%E6%96%87%E4%BB%B6-%E5%88%9B%E5%BB%BA%E8%BE%93%E5%85%A5%E7%9B%AE%E5%BD%95"><span class="nav-number">10.1.</span> <span class="nav-text">9.1创建测试用的Input文件,创建输入目录:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2%E5%B0%86wc-input%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0HDFS%E7%9A%84-wordcountdemo-input%E7%9B%AE%E5%BD%95%E4%B8%AD"><span class="nav-number">10.2.</span> <span class="nav-text">9.2将wc.input文件上传到HDFS的&#x2F;wordcountdemo&#x2F;input目录中:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3%E8%BF%90%E8%A1%8CWordCount-MapReduce-Job"><span class="nav-number">10.3.</span> <span class="nav-text">9.3运行WordCount MapReduce Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-4%E6%9F%A5%E7%9C%8B%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">10.4.</span> <span class="nav-text">9.4查看输出结果目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%AE%89%E8%A3%85spark"><span class="nav-number">11.</span> <span class="nav-text">十、安装spark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1%E7%99%BB%E9%99%86Apache-spark%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BDspark"><span class="nav-number">11.1.</span> <span class="nav-text">10.1登陆Apache spark官网下载spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2%E7%BC%96%E8%BE%91spark-env-sh"><span class="nav-number">11.2.</span> <span class="nav-text">10.2编辑spark-env.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-3%E6%B7%BB%E5%8A%A0y1%EF%BC%8Cy2%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="nav-number">11.3.</span> <span class="nav-text">10.3添加y1，y2节点信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">12.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">12.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6%EF%BC%9A"><span class="nav-number">12.1.0.0.0.1.</span> <span class="nav-text">前提条件：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E6%9F%A5%E7%9C%8BCentOS%E5%86%85%E6%A0%B8"><span class="nav-number">12.2.</span> <span class="nav-text">1.1查看CentOS内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">12.3.</span> <span class="nav-text">1.2安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%9B%B4%E6%96%B0-yum-%E6%BA%90"><span class="nav-number">12.3.0.0.1.</span> <span class="nav-text">1.更新 yum 源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="nav-number">12.3.0.0.2.</span> <span class="nav-text">2.安装依赖包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">12.3.0.0.3.</span> <span class="nav-text">3.设置阿里云镜像源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%90%AF%E5%8A%A8-Docker-CE"><span class="nav-number">12.3.0.0.4.</span> <span class="nav-text">4.启动 Docker-CE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E9%85%8D%E7%BD%AE"><span class="nav-number">12.3.0.0.5.</span> <span class="nav-text">5.镜像加速配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C-hello-world"><span class="nav-number">12.3.0.0.6.</span> <span class="nav-text">6.测试运行 hello-world</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#7-%E6%9F%A5%E7%9C%8Bdocker%E7%8A%B6%E6%80%81"><span class="nav-number">12.3.0.0.6.1.</span> <span class="nav-text">7.查看docker状态</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-docker%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">12.4.</span> <span class="nav-text">2.docker镜像操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89docker%E9%95%9C%E5%83%8F"><span class="nav-number">12.4.1.</span> <span class="nav-text">2.1列出所有docker镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">12.5.</span> <span class="nav-text">2.2拉取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-docker%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">12.6.</span> <span class="nav-text">3.docker容器操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8"><span class="nav-number">12.6.1.</span> <span class="nav-text">3.1查看容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8"><span class="nav-number">12.7.</span> <span class="nav-text">3.2创建容器</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xiaoy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xiaoy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lost">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-14 23:25:08" itemprop="dateCreated datePublished" datetime="2021-05-14T23:25:08+08:00">2021-05-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-16 16:59:39" itemprop="dateModified" datetime="2021-07-16T16:59:39+08:00">2021-07-16</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本教程使用的是基于 Hyper-V 的 Hadoop 集群。配置了三台 CentOS 虚拟机，部署 Hadoop-2.7.7。接下来将详细介绍如何进行配置。</p>
+<p>安装包提取地址：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA">https://pan.baidu.com/s/1kYED6eiV5LZyc9IF0vZfxA</a><br>提取码：y1y2<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<p> <b>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45921996/article/details/116424548?spm=1001.2014.3001.5501">Hadoop的集群搭建windows基于VMware虚拟机超详细教程（一主二从）</a><br> </b></p>
+<h1 id="一、XSHELL下载与-WinSCP安装"><a href="#一、XSHELL下载与-WinSCP安装" class="headerlink" title="一、XSHELL下载与 WinSCP安装"></a>一、XSHELL下载与 WinSCP安装</h1><pre><code>XShell 下载地址：https://www.netsarang.com/zh/free-for-home-school/
+
+WinSCP 下载地址：https://winscp.net/eng/download.php
+</code></pre>
+<p>XShell 是一个用于远程访问和管理 Linux 的终端工具，<br>WinSCP 也是一个远程管理 Linux 的工具，此处用于 SFTP 文件传输之用。（在下载中选中XSHELL填写姓名邮件即可下载，会通过邮件的方式发送）</p>
+<p>1.为什么要使用xshell呢？因为xshell用来在windows界面下访问远端不同系统下的服务器，从而实现较好地远程控制终端的目的。</p>
+<h1 id="二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机"><a href="#二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机" class="headerlink" title="二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机"></a>二、在Windows自带的hyper-V中安装CentOS7并创建虚拟机</h1><p>打开下载地址: <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/</a> , 下载 Minimal 镜像。</p>
+<p><img src="https://img-blog.csdnimg.cn/2021050921154729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>打开 Hyper-V，创建新的虚拟机</p>
+<p>为了方便管理，我们可以把虚拟机放在另一个位置，并写入名称。</p>
+<p><img src="1.png" alt="1"></p>
+<p>继续下一步，选择第二代。</p>
+<p><img src="2.jpg" alt="2"></p>
+<p>将启动内存设置为2G，即2048MB。</p>
+<p><img src="2.png" alt="3"></p>
+<p>点击下一步</p>
+<p><img src="3.png" alt="4"></p>
+<p>配置虚拟磁盘的大小，20GB 即可，储存位置默认为上一步骤中我们指定的位置，如无疑问可以不做更改。</p>
+<p><img src="4.jpg" alt="5"><br>配置安装盘并选择之前下载好的 CentOS 7 映像文件。</p>
+<p><img src="4.png" alt="6"></p>
+<p><img src="5.png" alt="7"></p>
+<p>点击完成。</p>
+<p><img src="6.png" alt="8"></p>
+<h1 id="三、安装并配置CentOS7"><a href="#三、安装并配置CentOS7" class="headerlink" title="三、安装并配置CentOS7"></a>三、安装并配置CentOS7</h1><h2 id="3-1安装CentOS7"><a href="#3-1安装CentOS7" class="headerlink" title="3.1安装CentOS7"></a>3.1安装CentOS7</h2><p>启动创建好的 CentOS 虚拟机，双击连接。</p>
+<p>启动安装程序，语言选择中文简体</p>
+<p><img src="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/7.png" alt="9"></p>
+<p>点击网络和主机名，配置网络连接。</p>
+<p><img src="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/10.png" alt="11"></p>
+<p>打开网络适配器，并点击配置，添加 IPv4 配置信息，配置如图所示。</p>
+<p>点击完成</p>
+<p><img src="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/9.png" alt="10"></p>
+<p>点击开始安装</p>
+<p><img src="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/11.png" alt="12"><br>安装过程中，我们点击设置 Root 密码。设置完成后，点击完成即可。弱密码需要点击两次完成以确认。</p>
+<p><img src="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/14.png" alt="15"></p>
+<p>安装完成后点击重启，登录使用用户名 root，</p>
+<p>密码为刚才设置的密码，输入密码时不会显示，输入完成后回车确认即可。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210512111842188.png#pic_center" alt="在这里插入图片描述"></p>
+<p>出现下面图片情况，表示登录成功。</p>
+<p><img src="https://img-blog.csdnimg.cn/2021051211191421.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="3-2配置CentOS"><a href="#3-2配置CentOS" class="headerlink" title="3.2配置CentOS"></a>3.2配置CentOS</h2><h3 id="3-2-1更新一下yum源"><a href="#3-2-1更新一下yum源" class="headerlink" title="3.2.1更新一下yum源"></a>3.2.1更新一下yum源</h3><ol>
+<li><p>更新 yum 源，输入以下命令回车执行：yum -y update</p>
+</li>
+<li><p>关闭防火墙，输入以下命令回车执行：systemctl disable firewalld.service</p>
+</li>
+<li><p>关闭 SELinux，按照下面步骤执行。</p>
+<p>输入命令：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/selinux/config</span><br></pre></td></tr></table></figure>
+
+<p>进入 vi 编辑器修改配置，找到 SELINUX=enforcing，将其更改为 disabled，保存并退出。</p>
+<p><img src="17.png" alt="17"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span>vi 编辑器使用帮助<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>vi 编辑器默认为命令模式，在命令模式下，按下 i 表示进入编辑模式。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>编辑完毕后，按 Esc 返回命令模式，然后输入冒号 : ，输入 wq 回车，保存并退出编辑器。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>需要使用和学习Linux常用命令可以转：<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/linux-common-command-2.html">Linux 常用命令学习</a></strong></p>
+<p>输入reboot命令回车重启系统，使命令生效。</p>
+<p>重启之后输入/usr/sbin/sestatus -v 查看SELinux是否被禁用</p>
+<h3 id="3-2-1更改主机名称"><a href="#3-2-1更改主机名称" class="headerlink" title="3.2.1更改主机名称"></a>3.2.1更改主机名称</h3><p>由于之前没有自定义主机名称，现在补上为了方便后期管理三台主机，我们可以在这里设置每台主机的主机名称。</p>
+<p>输入命令，将主机设置为 main：</p>
+<p>hostnamectl set-hostname main</p>
+<p><img src="18.png"></p>
+<h3 id="3-2-3修改hosts文件"><a href="#3-2-3修改hosts文件" class="headerlink" title="3.2.3修改hosts文件"></a>3.2.3修改hosts文件</h3><p>将本机和待会儿两台主机的 IP 地址先写入 hosts 文件，方便后期管理。</p>
+<p>输入以下命令编辑 hosts 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<p><img src="20.png"></p>
+<p>这里的 y1和 y2 是给其余两台主机起的主机名字，192.168.123.10 是主机 main 的 IP 地址。y1 和 y2 分别为 .11 和 .12，修改完成后保存并退出。</p>
+<h3 id="3-2-4创建HadoopTools文件夹-解压hadoop"><a href="#3-2-4创建HadoopTools文件夹-解压hadoop" class="headerlink" title="3.2.4创建HadoopTools文件夹,解压hadoop"></a>3.2.4创建HadoopTools文件夹,解压hadoop</h3><p>输入以下命令，创建 HadoopTools 文件夹：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /root</span><br><span class="line"></span><br><span class="line">mkdir HadoopTools</span><br><span class="line"></span><br><span class="line">cd HadoopTools</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用 WinSCP 将 Hadoop 安装包上传到 /root/HadoopTools 文件夹</p>
+<p><img src="21.png"></p>
+<p>然后我们回到虚拟机，用以下命令分别解压2个压缩包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.7.7.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf jdk-8u171-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-5配置JDK"><a href="#3-2-5配置JDK" class="headerlink" title="3.2.5配置JDK"></a>3.2.5配置JDK</h3><p>输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /root/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>将以下内容添加到文件末尾：将下面内容添加到文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/root/HadoopTools/jdk1.8.0_171</span><br><span class="line">export HADOOP_HOME=/root/HadoopTools/hadoop-2.7.7</span><br><span class="line">export PATH=$PATH:$&#123;HADOOP_HOME&#125;/bin:$&#123;HADOOP_HOME&#125;/sbin</span><br></pre></td></tr></table></figure>
+
+<p><img src="23.png"></p>
+<p>保存后，输入以下命令使修改的配置生效：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>然后输入java -version 查看java版本，检验安装是否成功，如果能出现下图所示，即表示配置成功。</p>
+<p><img src="24.png"></p>
+<p>验证完成后，输入 poweroff 关闭 CentOS，准备下一阶段配置。</p>
+<h1 id="四、复制CenyOS主机，搭建集群"><a href="#四、复制CenyOS主机，搭建集群" class="headerlink" title="四、复制CenyOS主机，搭建集群"></a>四、复制CenyOS主机，搭建集群</h1><h2 id="4-1复制虚拟机"><a href="#4-1复制虚拟机" class="headerlink" title="4.1复制虚拟机"></a>4.1复制虚拟机</h2><p>如下图所示，首先选择需要复制的虚拟机，第二步点击导出，第三步选择导出的位置，点击导出。</p>
+<p><img src="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/25.png" alt="img"></p>
+<p>然后选择导入虚拟机。导入时重命名主机为新的名字，例如 y1 或 y2</p>
+<p>导入时，选择导入为新的虚拟机（创建新的唯一 ID），复制第二台虚拟机时同样操作。</p>
+<h2 id="4-2配置主机名称以及主机-IP-信息"><a href="#4-2配置主机名称以及主机-IP-信息" class="headerlink" title="4.2配置主机名称以及主机 IP 信息"></a>4.2配置主机名称以及主机 IP 信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y1: hostnamectl set-hostname y1</span><br><span class="line">	vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line"></span><br><span class="line">y2: hostnamectl set-hostname y2  </span><br><span class="line">	vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
+
+<p>打开网络配置文件后，修改 <strong>IPADDR</strong> 为我们刚才指定的 192.168.123.11，保存退出编辑器。</p>
+<p>输入命令 service network restart 使新的网络配置文件生效。</p>
+<p>y2 相同操作，主机名为 y2，IP 地址为 192.168.123.</p>
+<p><img src="27.png"></p>
+<p><img src="28.png"></p>
+<p>将其ip设置为 192.168.123.11 ，保存后，输入 service network restart 使配置生效。</p>
+<h2 id="4-3测试集群连通性"><a href="#4-3测试集群连通性" class="headerlink" title="4.3测试集群连通性"></a>4.3测试集群连通性</h2><p>分别在 main, y1, y2 上进行互 ping 测试，如果能 ping 通则表示网络通信正常。</p>
+<p>ping 命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping main</span><br><span class="line">ping y1</span><br><span class="line">ping y2</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong> 使用 Ctrl + C 停止 ping 命令。</p>
+<p>如果不能 ping 成功，应检查网络配置是否正确。</p>
+<h1 id="五、用Xshell管理三台虚拟机"><a href="#五、用Xshell管理三台虚拟机" class="headerlink" title="五、用Xshell管理三台虚拟机"></a>五、用Xshell管理三台虚拟机</h1><h2 id="5-1-打开Xshell软件，点击新建会话"><a href="#5-1-打开Xshell软件，点击新建会话" class="headerlink" title="5.1.打开Xshell软件，点击新建会话"></a>5.1.打开Xshell软件，点击新建会话</h2><p><img src="29.png"></p>
+<p><img src="30.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210512120313541.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>按照这个方式将三个会话都连接上</p>
+<h2 id="5-2-在xshell中制作免密码登陆"><a href="#5-2-在xshell中制作免密码登陆" class="headerlink" title="5.2 在xshell中制作免密码登陆"></a>5.2 在xshell中制作免密码登陆</h2><p>在main中输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>然后一直按回车直到命令结束。<strong>同样的操作在，y1，y2中进行。</strong></p>
+<p><img src="31.png"></p>
+<p>在 main中一次输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id main</span><br><span class="line">ssh-copy-id y1</span><br><span class="line">ssh-copy-id y2</span><br></pre></td></tr></table></figure>
+
+<p>然后根据提示输入main，有y1，y2的密码，这里就是实现了对登陆的免密操作。</p>
+<p><img src="32.png"></p>
+<p>在 main 中通过 ssh 命令测试是否免密登陆成功，如下图：</p>
+<p><img src="33.png"></p>
+<h1 id="六、配置Hadoop"><a href="#六、配置Hadoop" class="headerlink" title="六、配置Hadoop"></a>六、配置Hadoop</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools/hadoop-2.7.7/etc/hadoop/</span><br><span class="line">在 main 中执行以下命令，并进行相应操作：</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-1修改hadoop-env-sh"><a href="#6-1修改hadoop-env-sh" class="headerlink" title="6.1修改hadoop-env.sh"></a>6.1修改hadoop-env.sh</h2><p>进入到hadoop-2.7.7文件夹,输入下面命令修改hadoop-env.sh:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim hadoop-env.sh</span><br></pre></td></tr></table></figure>
+
+<p>将export JAVA_HOME修改为下面的值，然后保存并退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># The java implementation to use.</span><br><span class="line"></span><br><span class="line"> export JAVA_HOME=/root/HadoopTools/jdk1.8.0_171</span><br></pre></td></tr></table></figure>
+
+<p><img src="34.png"></p>
+<h2 id="6-2-修改yarn-env-sh"><a href="#6-2-修改yarn-env-sh" class="headerlink" title="6.2 修改yarn-env.sh"></a>6.2 修改yarn-env.sh</h2><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim yarn-env.sh</span><br></pre></td></tr></table></figure>
+
+<p>修改JAVA_HOME，然后保存退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#some Java parameters</span><br><span class="line"></span><br><span class="line"> #export JAVA_HOME=/home/y/libexec/jdk1.6.0/</span><br><span class="line"></span><br><span class="line">if [ &quot;$JAVA_HOME&quot; != &quot;&quot; ]; then</span><br><span class="line">  #echo &quot;run java in $JAVA_HOME&quot;</span><br><span class="line">  JAVA_HOME=/root/HadoopTools/jdk1.8.0_171</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-3修改core-site-xml"><a href="#6-3修改core-site-xml" class="headerlink" title="6.3修改core-site.xml"></a>6.3修改core-site.xml</h2><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim core-site.xml</span><br></pre></td></tr></table></figure>
+
+<p>修改 core-site.xml<br>将下面内容复制粘贴到文件中，然后保存退出。</p>
+<p><strong>注意：配置时假如主机名称与博主不一致时请将<value></value>中的main修改为你的主机名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;fs.default.name&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://main:9000&lt;/value&gt;</span><br><span class="line">                &lt;description&gt;配置NameNode的URL&lt;/description&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;!--用来指定hadoop运行时产生的存放目录 --&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/root/Hadooptools/hadoop-tmp&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="35.png"></p>
+<h2 id="6-4修改mapred-site-xml"><a href="#6-4修改mapred-site-xml" class="headerlink" title="6.4修改mapred-site.xml"></a>6.4修改mapred-site.xml</h2><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim mapred-site.xml</span><br></pre></td></tr></table></figure>
+
+<p>修改 mapred-site.xml，将下面内容粘贴到文件中，保存退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line">  you may not use this file except in compliance with the License.</span><br><span class="line">  You may obtain a copy of the License at</span><br><span class="line">    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"></span><br><span class="line">  Unless required by applicable law or agreed to in writing, software</span><br><span class="line">  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">  See the License for the specific language governing permissions and</span><br><span class="line">  limitations under the License. See accompanying LICENSE file.</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Put site-specific property overrides in this file. --&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;!-- 指定mr框架为yarn方式 --&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="36.png"></p>
+<h2 id="6-5修改yarn-site-xml"><a href="#6-5修改yarn-site-xml" class="headerlink" title="6.5修改yarn-site.xml"></a>6.5修改yarn-site.xml</h2><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim yarn-site.xml</span><br></pre></td></tr></table></figure>
+
+<p>修改 yarn-site.xml，将下面内容粘贴到文件中：</p>
+<p><strong>注意：配置时假如主机名称与博主不一致时请将<value></value>中的main修改为你的主机名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;!--指定yarn的老大resoucemanager的地址--&gt;</span><br><span class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;main&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;!--NodeManager 获取数据的方式--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-6修改slaves"><a href="#6-6修改slaves" class="headerlink" title="6.6修改slaves"></a>6.6修改slaves</h2><p>输入：vim slaves，修改 slaves<br>粘贴以下内容到文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main</span><br><span class="line">y1</span><br><span class="line">y2</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-7建立hadoop-tmp文件夹"><a href="#6-7建立hadoop-tmp文件夹" class="headerlink" title="6.7建立hadoop-tmp文件夹"></a>6.7建立hadoop-tmp文件夹</h2><p>cd到 HadoopTools 文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools/</span><br></pre></td></tr></table></figure>
+
+<p>输入命令 , 新建文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir hadoop-tmp</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-8拷贝-Hadoop-到-y1-和-y2-中"><a href="#6-8拷贝-Hadoop-到-y1-和-y2-中" class="headerlink" title="6.8拷贝 Hadoop 到 y1 和 y2 中"></a>6.8拷贝 Hadoop 到 y1 和 y2 中</h2><p>依次在 y1，y2 上执行一下命令，千万别删错了，不要删除在main上的文件夹：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /root/Hadooptools/</span><br></pre></td></tr></table></figure>
+
+<p>将 master 上的 Hadooptools文件夹复制到y1，y2上。</p>
+<p>依次运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r /root/HadoopTools root@y1:/root/</span><br><span class="line">scp -r /root/HadoopTools root@y2:/root/</span><br></pre></td></tr></table></figure>
+
+<h1 id="七、配置、格式化、启动HDFS"><a href="#七、配置、格式化、启动HDFS" class="headerlink" title="七、配置、格式化、启动HDFS"></a>七、配置、格式化、启动HDFS</h1><h2 id="7-1配置hdfs-site-xml"><a href="#7-1配置hdfs-site-xml" class="headerlink" title="7.1配置hdfs-site.xml"></a>7.1配置hdfs-site.xml</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-2该命令只能在master上执行，且只能执行一次，不可多次执行。"><a href="#7-2该命令只能在master上执行，且只能执行一次，不可多次执行。" class="headerlink" title="7.2该命令只能在master上执行，且只能执行一次，不可多次执行。"></a>7.2<strong>该命令只能在master上执行，且只能执行一次，不可多次执行。</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br><span class="line"></span><br><span class="line">/root/HadoopTools/hadoop-2.7.7/etc/hadoop/</span><br></pre></td></tr></table></figure>
+
+<p><img src="38.png"></p>
+<p>当看到如上图中所示 successfully 提示信息则表示格式化成功。</p>
+<h2 id="7-3启动NameNode"><a href="#7-3启动NameNode" class="headerlink" title="7.3启动NameNode"></a>7.3<strong>启动NameNode</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;/sbin/hadoop-daemon.sh start namenode starting namenode, logging to /root/HadoopTools/hadoop-2.7.7/logs/hadoop-hadoop-namenode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-4启动DataNode"><a href="#7-4启动DataNode" class="headerlink" title="7.4启动DataNode"></a>7.4<strong>启动DataNode</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;/sbin/hadoop-daemon.sh start datanode starting datanode, logging to /root/HadoopTools/hadoop-2.7.7/logs/hadoop-hadoop-datanode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-5启动SecondaryNameNode"><a href="#7-5启动SecondaryNameNode" class="headerlink" title="7.5启动SecondaryNameNode"></a>7.5<strong>启动SecondaryNameNode</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;HADOOP_HOME&#125;/sbin/hadoop-daemon.sh start secondarynamenode starting secondarynamenode, logging to /root/HadoopTools/hadoop-2.7.7/logs/hadoop-hadoop-secondarynamenode-bigdata-senior01.chybinmy.com.out</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-6HDFS上测试创建目录、上传、下载文件"><a href="#7-6HDFS上测试创建目录、上传、下载文件" class="headerlink" title="7.6HDFS上测试创建目录、上传、下载文件"></a>7.6<strong>HDFS上测试创建目录、上传、下载文件</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;/bin/hdfs dfs -mkdir /demo1</span><br><span class="line">[root@main hadoop-2.7.7]# $&#123;HADOOP_HOME&#125;/bin/hdfs dfs -put $&#123;HADOOP_HOME&#125;/etc/hadoop/core-site.xml /demo1</span><br><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;/bin/hdfs dfs -cat /demo1/core-site.xml</span><br></pre></td></tr></table></figure>
+
+<p><img src="47.png"></p>
+<h2 id="7-7从HDFS上下载文件到本地"><a href="#7-7从HDFS上下载文件到本地" class="headerlink" title="7.7从HDFS上下载文件到本地"></a>7.7从HDFS上下载文件到本地</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  bin/hdfs dfs -get /demo1/core-site.xml</span><br></pre></td></tr></table></figure>
+
+<p><img src="45.png"></p>
+<h2 id="7-8启动Resourcemanager"><a href="#7-8启动Resourcemanager" class="headerlink" title="7.8启动Resourcemanager"></a>7.8启动Resourcemanager</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;/sbin/yarn-daemon.sh start resourcemanager</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-9启动nodemanager"><a href="#7-9启动nodemanager" class="headerlink" title="7.9启动nodemanager"></a>7.9启动nodemanager</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  $&#123;HADOOP_HOME&#125;/sbin/yarn-daemon.sh start nodemanager</span><br></pre></td></tr></table></figure>
+
+<p>#查看是否启动成功</p>
+<p><img src="46.png"></p>
+<h1 id="八、启动-Hadoop-集群"><a href="#八、启动-Hadoop-集群" class="headerlink" title="八、启动 Hadoop 集群"></a>八、启动 Hadoop 集群</h1><h2 id="8-1一行命令启动-Hadoop-集群"><a href="#8-1一行命令启动-Hadoop-集群" class="headerlink" title="8.1一行命令启动 Hadoop 集群"></a>8.1一行命令启动 Hadoop 集群</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start-all.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="37.png"></p>
+<h2 id="8-2用宿主机浏览器访问-http-192-168-123-10-50070-查看启动是否成功。"><a href="#8-2用宿主机浏览器访问-http-192-168-123-10-50070-查看启动是否成功。" class="headerlink" title="8.2用宿主机浏览器访问 http://192.168.123.10:50070 查看启动是否成功。"></a>8.2用宿主机浏览器访问 <a target="_blank" rel="noopener" href="http://192.168.123.10:50070/">http://192.168.123.10:50070</a> 查看启动是否成功。</h2><p><img src="39.png"></p>
+<p>在上图可以看到有3台节点同时在线，如果不是3台证明有问题，需要查看哪里出错了。如果是3台表配置成功。</p>
+<h2 id="8-3登陆yarn的WebUI-http-192-168-123-10-8088"><a href="#8-3登陆yarn的WebUI-http-192-168-123-10-8088" class="headerlink" title="8.3登陆yarn的WebUI http://192.168.123.10:8088/"></a>8.3登陆yarn的WebUI <a target="_blank" rel="noopener" href="http://192.168.123.10:8088/">http://192.168.123.10:8088/</a></h2><p><img src="40.png"></p>
+<h1 id="九、运行MapReduce-Job"><a href="#九、运行MapReduce-Job" class="headerlink" title="九、运行MapReduce Job"></a>九、<strong>运行MapReduce Job</strong></h1><h2 id="9-1创建测试用的Input文件-创建输入目录"><a href="#9-1创建测试用的Input文件-创建输入目录" class="headerlink" title="9.1创建测试用的Input文件,创建输入目录:"></a>9.1创建测试用的Input文件,创建输入目录:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]# bin/hdfs dfs -mkdir -p /wordcountdemo/input</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2将wc-input文件上传到HDFS的-wordcountdemo-input目录中"><a href="#9-2将wc-input文件上传到HDFS的-wordcountdemo-input目录中" class="headerlink" title="9.2将wc.input文件上传到HDFS的/wordcountdemo/input目录中:"></a>9.2将wc.input文件上传到HDFS的/wordcountdemo/input目录中:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#  bin/hdfs dfs -put /opt/data/wc.input /wordcountdemo/input</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-3运行WordCount-MapReduce-Job"><a href="#9-3运行WordCount-MapReduce-Job" class="headerlink" title="9.3运行WordCount MapReduce Job"></a>9.3运行WordCount MapReduce Job</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin/yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.7.jar wordcount /wordcountdemo/input /wordcountdemo/output</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-4查看输出结果目录"><a href="#9-4查看输出结果目录" class="headerlink" title="9.4查看输出结果目录"></a>9.4查看输出结果目录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin/hdfs dfs -ls /wordcountdemo/output</span><br></pre></td></tr></table></figure>
+
+<p><img src="48.png"></p>
+<p>output目录中有两个文件，_SUCCESS文件是空文件，有这个文件说明Job执行成功。part-r-00000文件是结果文件，其中-r-说明这个文件是Reduce阶段产生的结果，mapreduce程序执行时，可以没有reduce阶段，但是肯定会有map阶段，如果没有reduce阶段这个地方有是-m-。一个reduce会产生一个part-r-开头的文件。查看输出文件内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@main hadoop-2.7.7]#bin/hdfs dfs -cat /wordcountdemo/output/part-r-00000</span><br></pre></td></tr></table></figure>
+
+<p><img src="49.png"></p>
+<h1 id="十、安装spark"><a href="#十、安装spark" class="headerlink" title="十、安装spark"></a>十、安装spark</h1><h2 id="10-1登陆Apache-spark官网下载spark"><a href="#10-1登陆Apache-spark官网下载spark" class="headerlink" title="10.1登陆Apache spark官网下载spark"></a>10.1登陆Apache spark官网下载spark</h2><p>地址：<a target="_blank" rel="noopener" href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a><br>如下图所示下载 Spark:</p>
+<p><img src="https://img-blog.csdnimg.cn/20210512154150632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTkyMTk5Ng==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>再次使用Win SCP 将下载的压缩包传到main主机</p>
+<p>在Xshell中解压刚刚上传的压缩包（依次输入下面命令）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools</span><br><span class="line"></span><br><span class="line"> tar -zxvf spark-3.1.1-bin-hadoop2.7.tgz</span><br></pre></td></tr></table></figure>
+
+<p>将spark-3.1.1-bin-hadoop2.7文件夹名字修改成spark<br>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv spark-3.1.1-bin-hadoop2.7 spark</span><br></pre></td></tr></table></figure>
+
+<p>修改环境变量，添加spark<br>输入：vim /root/.bash_profile<br>添加下面内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_HOME=/root/HadoopTools/spark </span><br><span class="line">export PATH=$PATH:$&#123;SPARK_HOME&#125;/bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="41.png"></p>
+<p>输入：source /root/.bash_profile，使其生效。</p>
+<h2 id="10-2编辑spark-env-sh"><a href="#10-2编辑spark-env-sh" class="headerlink" title="10.2编辑spark-env.sh"></a>10.2编辑spark-env.sh</h2><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools/spark/conf/</span><br><span class="line"></span><br><span class="line">cp spark-env.sh.template spark-env.sh</span><br><span class="line"></span><br><span class="line">vim spark-env.sh</span><br></pre></td></tr></table></figure>
+
+<p>将下面内容添加到文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/root/HadoopTools/jdk1.8.0_171</span><br><span class="line">export SPARK_MASTER_IP=192.168.123.10</span><br><span class="line">export SPARK_WORKER_MEMORY=1g</span><br><span class="line">export HADOOP_CONF_DIR=/root/HadoopTools/hadoop-2.7.7/etc/hadoop</span><br></pre></td></tr></table></figure>
+
+<p><img src="42.png"></p>
+<h2 id="10-3添加y1，y2节点信息"><a href="#10-3添加y1，y2节点信息" class="headerlink" title="10.3添加y1，y2节点信息"></a>10.3添加y1，y2节点信息</h2><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /root/HadoopTools/spark/conf/slaves</span><br></pre></td></tr></table></figure>
+
+<p>在文件中添加，保存退出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y1</span><br><span class="line">y2</span><br></pre></td></tr></table></figure>
+
+<p>将spark文件夹复制到y1，y2<br>运行下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools</span><br><span class="line">scp -r spark root@y1:/root/HadoopTools/</span><br><span class="line">scp -r spark root@y2:/root/HadoopTools/</span><br></pre></td></tr></table></figure>
+
+<p>进入spark文件夹，启动spark<br>运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools/spark/sbin/ </span><br><span class="line">./start-all.sh</span><br></pre></td></tr></table></figure>
+
+<p>在主机的浏览器中访问地址：<a target="_blank" rel="noopener" href="http://192.168.123.10:8080/">http://192.168.123.10:8080</a> ，查看是否能成功访问</p>
+<p><img src="43.png"></p>
+<p>测试spark运行是否正常<br>运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/HadoopTools/spark/</span><br><span class="line">./bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://main:7077 ./examples//jars/spark-examples_2.12-3.1.1.jar 100</span><br></pre></td></tr></table></figure>
+
+<p>然后打开spark的WebUI查看运行情况<br><a target="_blank" rel="noopener" href="http://192.168.154.128:8080/">http://192.168.123.10:8080</a></p>
+<p><img src="44.png"></p>
+<p>到此本章教程已结束，感谢阅读！</p>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h2><p>本教程是基于CentOS7上安装和使用docker。本次使用的是在Windows自带的hyper-V中安装CentOS7并创建的虚拟机。</p>
+<p>安装CentOs创建虚拟机教程可查看上一篇：<a href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/">Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）</a></p>
+<h6 id="前提条件："><a href="#前提条件：" class="headerlink" title="前提条件："></a>前提条件：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目前，CentOS 仅发行版本中的内核支持 Docker。</span><br><span class="line">1、Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。</span><br><span class="line">2、Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统内核版本为 2.6.32-431 或者更高版本。</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-1查看CentOS内核"><a href="#1-1查看CentOS内核" class="headerlink" title="1.1查看CentOS内核"></a>1.1查看CentOS内核</h2><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。</p>
+<p>通过 uname -r 命令查看你当前的内核版本</p>
+<p><img src="59.png"></p>
+<p><strong>tips</strong>:从 2017 年 3 月开始 docker 在原来的基础上分为两个分支版本: Docker CE 和 Docker EE。<br> Docker CE 即社区免费版，Docker EE 即企业版，强调安全，但需付费使用。</p>
+<h2 id="1-2安装与配置"><a href="#1-2安装与配置" class="headerlink" title="1.2安装与配置"></a>1.2安装与配置</h2><h5 id="1-更新-yum-源"><a href="#1-更新-yum-源" class="headerlink" title="1.更新 yum 源"></a>1.更新 yum 源</h5><p>输入以下命令回车执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2.安装依赖包"></a>2.安装依赖包</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2 </span><br></pre></td></tr></table></figure>
+
+<p><img src="57.png"></p>
+<h5 id="3-设置阿里云镜像源"><a href="#3-设置阿里云镜像源" class="headerlink" title="3.设置阿里云镜像源"></a>3.设置阿里云镜像源</h5><ul>
+<li>重建 Yum 缓存。</li>
+<li>安装 Docker-CE ，请执行一下命令进行安装：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-启动-Docker-CE"><a href="#4-启动-Docker-CE" class="headerlink" title="4.启动 Docker-CE"></a>4.启动 Docker-CE</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br><span class="line"></span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-镜像加速配置"><a href="#5-镜像加速配置" class="headerlink" title="5.镜像加速配置"></a>5.镜像加速配置</h5><p>这里使用的是 <a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/#/accelerator">阿里云提供的镜像加速</a> ，登录并且设置密码之后在左侧容器镜像服务下的镜像加速，如下图三步，</p>
+<p>通过修改daemon配置文件/etc/docker/daemon.json来使用加速器，将步骤三的命令复制到主机命令窗口。</p>
+<p><img src="58.png"></p>
+<p><img src="53.png"></p>
+<p>之后重新加载配置，并且重启 Docker 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h5 id="6-测试运行-hello-world"><a href="#6-测试运行-hello-world" class="headerlink" title="6.测试运行 hello-world"></a>6.测试运行 hello-world</h5><p>输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<p><img src="56.png"></p>
+<p>由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行，看到显示Hello from Docker!表示Docker安装启动成功。</p>
+<h6 id="7-查看docker状态"><a href="#7-查看docker状态" class="headerlink" title="7.查看docker状态"></a>7.查看docker状态</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+
+<p><img src="57.png"></p>
+<p>如上图显示的绿色字体，active（runing)表示正在运行。</p>
+<h2 id="2-docker镜像操作"><a href="#2-docker镜像操作" class="headerlink" title="2.docker镜像操作"></a>2.docker镜像操作</h2><h3 id="2-1列出所有docker镜像"><a href="#2-1列出所有docker镜像" class="headerlink" title="2.1列出所有docker镜像"></a>2.1列出所有docker镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img src="60.png"></p>
+<p>各个选项说明:</p>
+<p>REPOSITORY：表示镜像的仓库源</p>
+<p>TAG：镜像的标签</p>
+<p>IMAGE ID：镜像ID</p>
+<p>CREATED：镜像创建时间</p>
+<p>SIZE：镜像大小</p>
+<p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
+<h2 id="2-2拉取镜像"><a href="#2-2拉取镜像" class="headerlink" title="2.2拉取镜像"></a>2.2拉取镜像</h2><p>拉取微软在 Docker 上的 aspnetcore 镜像:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull microsoft/aspnetcore</span><br></pre></td></tr></table></figure>
+
+<p>之后执行以下命令查看是否拉取成功:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img src="64.png"></p>
+<h2 id="3-docker容器操作"><a href="#3-docker容器操作" class="headerlink" title="3.docker容器操作"></a>3.docker容器操作</h2><p>容器是基于镜像创建的，说白了把一个镜像运行起来就是容器</p>
+<h3 id="3-1查看容器"><a href="#3-1查看容器" class="headerlink" title="3.1查看容器"></a>3.1查看容器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p><img src="65.png"></p>
+<h2 id="3-2创建容器"><a href="#3-2创建容器" class="headerlink" title="3.2创建容器"></a>3.2创建容器</h2><p>docker run 创建tomcat容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name tomcat -d -p 8080:8080 tomcat</span><br></pre></td></tr></table></figure>
+
+<p><img src="66.png"></p>
+<p>访问试试，通过浏览器输入主机ip:8080成功访问到tomcat主页。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8504906-bea4002f5278c143.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" rel="prev" title="SQlite存储方式">
+                  <i class="fa fa-chevron-left"></i> SQlite存储方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Docker/" rel="next" title="Docker">
+                  Docker <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xiaoy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

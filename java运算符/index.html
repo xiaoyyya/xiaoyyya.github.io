@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;xhgm.club&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="java运算符 算术运算符 关系运算符 位运算符 逻辑运算符 赋值运算符 其他运算符  1.算术运算符+、-、*、&#x2F;、%、++、– ++a,–a:先进行自增或自减运算，在进行表达式运算 a++、a–：先进行表达式运算，在进行自增或者自减运算 2.关系运算符&#x3D;&#x3D;、！&#x3D;、&gt;、&lt;、&gt;&#x3D;、&lt;&#x3D; 3.位运算符java定义了位运算符，应用于整数类型（int),长整型，短整型，字符型，和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java运算符">
+<meta property="og:url" content="https://xhgm.club/java%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:site_name" content="Lost">
+<meta property="og:description" content="java运算符 算术运算符 关系运算符 位运算符 逻辑运算符 赋值运算符 其他运算符  1.算术运算符+、-、*、&#x2F;、%、++、– ++a,–a:先进行自增或自减运算，在进行表达式运算 a++、a–：先进行表达式运算，在进行自增或者自减运算 2.关系运算符&#x3D;&#x3D;、！&#x3D;、&gt;、&lt;、&gt;&#x3D;、&lt;&#x3D; 3.位运算符java定义了位运算符，应用于整数类型（int),长整型，短整型，字符型，和">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-16T08:02:28.000Z">
+<meta property="article:modified_time" content="2021-07-16T08:55:05.713Z">
+<meta property="article:author" content="Xiaoy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xhgm.club/java%E8%BF%90%E7%AE%97%E7%AC%A6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;xhgm.club&#x2F;java%E8%BF%90%E7%AE%97%E7%AC%A6&#x2F;&quot;,&quot;path&quot;:&quot;java运算符&#x2F;&quot;,&quot;title&quot;:&quot;java运算符&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>java运算符 | Lost</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lost</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">java运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">1.算术运算符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">2.关系运算符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">3.位运算符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">4.逻辑运算符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">5.赋值运算符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88%EF%BC%9F%EF%BC%9A%EF%BC%89"><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">6.条件运算符（？：）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-instanceof-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.0.0.0.7.</span> <span class="nav-text">7.instanceof 运算符</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xiaoy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xhgm.club/java%E8%BF%90%E7%AE%97%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xiaoy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lost">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java运算符
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-07-16 16:02:28 / 修改时间：16:55:05" itemprop="dateCreated datePublished" datetime="2021-07-16T16:02:28+08:00">2021-07-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="java运算符"><a href="#java运算符" class="headerlink" title="java运算符"></a>java运算符</h2><ul>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>位运算符</li>
+<li>逻辑运算符</li>
+<li>赋值运算符</li>
+<li>其他运算符</li>
+</ul>
+<h6 id="1-算术运算符"><a href="#1-算术运算符" class="headerlink" title="1.算术运算符"></a>1.算术运算符</h6><p>+、-、*、/、%、++、–</p>
+<p>++a,–a:先进行自增或自减运算，在进行表达式运算</p>
+<p>a++、a–：先进行表达式运算，在进行自增或者自减运算</p>
+<h6 id="2-关系运算符"><a href="#2-关系运算符" class="headerlink" title="2.关系运算符"></a>2.关系运算符</h6><p>==、！=、&gt;、&lt;、&gt;=、&lt;=</p>
+<h6 id="3-位运算符"><a href="#3-位运算符" class="headerlink" title="3.位运算符"></a>3.位运算符</h6><p>java定义了位运算符，应用于整数类型（int),长整型，短整型，字符型，和字节型等类型。</p>
+<p>位运算符作用在所有位上，并且按位运算，假设a=60,b=13他们的二进制表示如下：</p>
+<p>A=00 11 1100</p>
+<p>B=0000 1101</p>
+<p>a&amp;b=0000 11 00 (11为1)</p>
+<p>a|b=0011 11 01（00为0）</p>
+<p>a^b=0011 0001（对应位相同就是0，不同为1）</p>
+<p>~A=1100 0011（按位取反）</p>
+<p>&lt;&lt;按位左移运算符 A&lt;&lt;2得到 1111 00 00</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;按位右移 A&gt;&gt;2 得到 00001111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="4-逻辑运算符"><a href="#4-逻辑运算符" class="headerlink" title="4.逻辑运算符"></a>4.逻辑运算符</h6><p>&amp;&amp;、||、!</p>
+<h6 id="5-赋值运算符"><a href="#5-赋值运算符" class="headerlink" title="5.赋值运算符"></a>5.赋值运算符</h6><p>=:右边操作数的值赋给左边操作数</p>
+<p>+=,加和赋值操作，左边操作数+右边操作数赋值给左边</p>
+<p>-=：减和赋值操作，左边操作数减去右边赋值给左边</p>
+<p>*=：乘和操作，左边乘以右边赋值给左边</p>
+<p>/=：除和操作，左边除以右边赋值给左边</p>
+<p>(%)=：取模和赋值操作符，左边和右边取模赋值给左边 C%=A等价C=C%A</p>
+<p>&lt;&lt;=：左移位赋值操作符，C&lt;&lt;=2等价C=C&lt;&lt;2</p>
+<p>,&gt;&gt;=,</p>
+<p>&amp;=:按位与赋值操作符 C&amp;=等价于C=C&amp;2</p>
+<p>^=:a按位异或操作符 C^=2等价于C=C^2</p>
+<p>|=:按位或操作符 C|=2等价于 C=C|2</p>
+<h6 id="6-条件运算符（？：）"><a href="#6-条件运算符（？：）" class="headerlink" title="6.条件运算符（？：）"></a>6.条件运算符（？：）</h6><p>​    条件运算符也成为三元运算。该运算符有三个操作数，并且需要判断布尔表达式的值，改运算符的主要是决定那个值应该赋值给变量。</p>
+<p>​    variable x=(expresion )?value if true:value if false</p>
+<p>eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Test&#123;</span><br><span class="line">	public static void main(String args)&#123;</span><br><span class="line">		int a,b;</span><br><span class="line">		a=10;</span><br><span class="line">		b=(a==1)?20:30;</span><br><span class="line">		</span><br><span class="line">		system.out.print(&quot;value of b is&quot;+b);</span><br><span class="line">		</span><br><span class="line">		b=(a==10)?20:30;</span><br><span class="line">		system.out.print(&quot;value of b is&quot;+b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="7-instanceof-运算符"><a href="#7-instanceof-运算符" class="headerlink" title="7.instanceof 运算符"></a>7.instanceof 运算符</h6><p>​    该运算符用于操作对象实例，检查改对象是否是一个特定类型（类类型或者接口类型）</p>
+<p>​    instanceof运算符使用格式：</p>
+<p>​            （Object reference variable) instanceof (class\interface type)</p>
+<p>如果运算符左侧变量所指的对象，是操作符右侧类或接口(class/interface)的一个对象，那么结果为真。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String name = &quot;James&quot;;</span><br><span class="line">boolean result = name instanceof String; // 由于 name 是 String 类型，所以返回真</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/java%E5%AD%A6%E4%B9%A0/" rel="prev" title="java学习">
+                  <i class="fa fa-chevron-left"></i> java学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xiaoy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
