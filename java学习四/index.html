@@ -4,7 +4,7 @@
 
 <head>
   
-  <title>SQlite存储方式 - Lost</title>
+  <title>java学习四 - Lost</title>
   <meta charset="UTF-8">
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -13,21 +13,19 @@
   
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <meta name="description" content="Android使用SQLite作为存储数据库，它是一个免费开源且与底层无关的数据库。Android提供了创建和使用SQLite数据库的API LayoutInflater将布局XML文件实例化为其相应的视图对象 ArrayAdapter数组适配器 ArrayAdapter是一个比较简单的数组适配器，只能展示一行文字，无需自定义布局，使用系统提供的布局即可。这个适配器可以为AdapterView提供">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SQlite存储方式">
-<meta property="og:url" content="https://xhgm.club/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="java学习四">
+<meta property="og:url" content="https://xhgm.club/java%E5%AD%A6%E4%B9%A0%E5%9B%9B/index.html">
 <meta property="og:site_name" content="Lost">
-<meta property="og:description" content="Android使用SQLite作为存储数据库，它是一个免费开源且与底层无关的数据库。Android提供了创建和使用SQLite数据库的API LayoutInflater将布局XML文件实例化为其相应的视图对象 ArrayAdapter数组适配器 ArrayAdapter是一个比较简单的数组适配器，只能展示一行文字，无需自定义布局，使用系统提供的布局即可。这个适配器可以为AdapterView提供">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-04T01:52:20.000Z">
-<meta property="article:modified_time" content="2021-05-07T05:10:09.520Z">
+<meta property="article:published_time" content="2021-07-21T09:34:44.000Z">
+<meta property="article:modified_time" content="2021-07-25T16:10:23.502Z">
 <meta property="article:author" content="Xiaoy">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=1627745277739">
+  <link rel="stylesheet" href="/css/style.css?v=1627745277708">
   
-  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1627745277739">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1627745277708">
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
 </head>
 
@@ -132,35 +130,27 @@
   <article>
     
         <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SQlite存储方式" class="lazyload">
-            <h1>SQlite存储方式</h1>
+            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="java学习四" class="lazyload">
+            <h1>java学习四</h1>
         </div>
     
     
     <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月04日</a>
-    <a><i class="nexmoefont icon-areachart"></i>439 字</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年07月21日</a>
+    <a><i class="nexmoefont icon-areachart"></i>0 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
 </div>
 
     
 
-    <p>Android使用SQLite作为存储数据库，它是一个免费开源且与底层无关的数据库。<br>Android提供了创建和使用SQLite数据库的API</p>
-<p>LayoutInflater将布局XML文件实例化为其相应的视图对象</p>
-<p>ArrayAdapter数组适配器</p>
-<p>ArrayAdapter是一个比较简单的数组适配器，只能展示一行文字，无需自定义布局，使用系统提供的布局即可。<br>这个适配器可以为AdapterView提供视图，为您提供的数据对象集合中的每个对象返回视图，并且可以与基于列表的用户界面小部件（ListView或Spinner）一起使用。</p>
-<p><span style='color:white;background:black;font-size:20px;font-family:仿宋;'>默认情况下，数组适配器通过对您提供的集合的每个数据对象调用Object.toString()来创建一个视图，并且将结果放置在TextView中。</span><br>您还可以自定义用于集合中数据对象的视图类型，要自定义数据对象使用的视图类型。</p>
-<p>以下是ArrayAdapter常用的构造函数用于生成数组适配器：<br><span style='color:white;background:black;font-size:20px;font-family:仿宋;'><br>ArrayAdapter(Context context,int resourse,int textViewResId)<br>ArrayAdapter(Context context,int textViewResId,T[] object)<br>ArrayAdapter(Context context,int textViewResId,List&lt;<span style="color:red;">T</span>&gt;object)</span></p>
-<p>Context: 上下文环境，在Activity中一般使用this<br>resourse: 资源ID<br>textViewResId：文本视图资源ID，如下拉列表组件的ID<br>object： 泛指数据/集合</p>
-<p>ArrayAdapter使用步骤：<br><b>·</b> 定义一个数组或者集合用于存放ListView中的item的内容<br><b>·</b> 使用ArrayAdapter的构造方法创建一个ArrayAdapter对象。ArrayAdapter有很多构造函数的方法，最常用的就是带有三个参数的方法，第一个是上下文对象，第二个参数对象是ListView每一行（item）的布局资源ID；第三个参数就是数据源。<br><b>·</b> 使用ListView的setAdapter()方法绑定ArrayAdapter.</p>
-
+    
   </article>
 
   
     
   <div class="nexmoe-post-copyright">
     <strong>本文作者：</strong>Xiaoy<br>
-    <strong>本文链接：</strong><a href="https://xhgm.club/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" title="https:&#x2F;&#x2F;xhgm.club&#x2F;SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xhgm.club&#x2F;SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F&#x2F;</a><br>
+    <strong>本文链接：</strong><a href="https://xhgm.club/java%E5%AD%A6%E4%B9%A0%E5%9B%9B/" title="https:&#x2F;&#x2F;xhgm.club&#x2F;java%E5%AD%A6%E4%B9%A0%E5%9B%9B&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xhgm.club&#x2F;java%E5%AD%A6%E4%B9%A0%E5%9B%9B&#x2F;</a><br>
     
       <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
     
@@ -211,7 +201,7 @@
 
  
 
-<script async src="/js/app.js?v=1627745277740"></script>
+<script async src="/js/app.js?v=1627745277709"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>

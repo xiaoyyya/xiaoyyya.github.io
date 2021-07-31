@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  
+  <title>java学习三 - Lost</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="日期时间第一个构造函数使用当前时间和日期来初始化对象 1Date()  第二个构造函数接收一个函数，该函数是从1970年1月1日起的毫秒数。 1Date(long millisec)  获取当前日期时间java中获取当前日期和时间，都会用Date对象的toString（）方法来打印当前日期和时间。 123456import java.util.Date;public class DateDemo&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java学习三">
+<meta property="og:url" content="https://xhgm.club/java%E5%AD%A6%E4%B9%A0%E4%B8%89/index.html">
+<meta property="og:site_name" content="Lost">
+<meta property="og:description" content="日期时间第一个构造函数使用当前时间和日期来初始化对象 1Date()  第二个构造函数接收一个函数，该函数是从1970年1月1日起的毫秒数。 1Date(long millisec)  获取当前日期时间java中获取当前日期和时间，都会用Date对象的toString（）方法来打印当前日期和时间。 123456import java.util.Date;public class DateDemo&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-21T02:11:44.000Z">
+<meta property="article:modified_time" content="2021-07-21T09:33:44.109Z">
+<meta property="article:author" content="Xiaoy">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=1627745277711">
+  
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1627745277711">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Xiaoy" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Xiaoy"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Xiaoy">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Xiaoy" alt="Xiaoy">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>2</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/1/" style="font-size: 10px;">1</a> <a href="/tags/java/" style="font-size: 10px;">java</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Xiaoy
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="java学习三" class="lazyload">
+            <h1>java学习三</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年07月21日</a>
+    <a><i class="nexmoefont icon-areachart"></i>948 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+</div>
+
+    
+
+    <h2 id="日期时间"><a href="#日期时间" class="headerlink" title="日期时间"></a>日期时间</h2><p>第一个构造函数使用当前时间和日期来初始化对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date()</span><br></pre></td></tr></table></figure>
+
+<p>第二个构造函数接收一个函数，该函数是从1970年1月1日起的毫秒数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date(long millisec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取当前日期时间"><a href="#获取当前日期时间" class="headerlink" title="获取当前日期时间"></a>获取当前日期时间</h2><p>java中获取当前日期和时间，都会用Date对象的toString（）方法来打印当前日期和时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Date;</span><br><span class="line">public class DateDemo&#123;</span><br><span class="line">	Date date=new Date();</span><br><span class="line">	使用toString()函数显示日期时间</span><br><span class="line">	System.out.println(date.toString())；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Wed Jul 21 10:44:12 CST 2021</p>
+<h4 id="日期比较"><a href="#日期比较" class="headerlink" title="日期比较"></a>日期比较</h4><ul>
+<li>使用getTime()方法获取两个日期（自1970年1月1日），然后比较这两个值</li>
+<li>使用before（），after()和equal()。例如一个月的12号比18号早 ，则new Date(99,2,12)before(new Date(99,2,18))返回true</li>
+<li>使用compareTo()方法，它是由comparable接口定义的，Date类实现了这个接口。</li>
+</ul>
+<h2 id="使用simpleDateFormat格式化日期"><a href="#使用simpleDateFormat格式化日期" class="headerlink" title="使用simpleDateFormat格式化日期"></a>使用simpleDateFormat格式化日期</h2><p>simpleDateFormat是一个以语言环境敏感的方式来格式化和分析日期的类。SimpleDateFormate允许你选择任何用户自定义日期时间啦运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Date;</span><br><span class="line">import java.text.*;</span><br><span class="line">public class DateDemo&#123;</span><br><span class="line">	public static void main(String args[])&#123;</span><br><span class="line">        Date date=new Date();</span><br><span class="line">        使用toString()函数显示日期时间</span><br><span class="line">        SimpleDateFormat ft=new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm-ss&quot;);</span><br><span class="line">        System.out.println(&quot;当前时间为&quot;+ft.format(date))；</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当前时间为2021-07-21 10:56:26</p>
+<h5 id="使用printf格式化日期。"><a href="#使用printf格式化日期。" class="headerlink" title="使用printf格式化日期。"></a>使用printf格式化日期。</h5><p>使用两个字母格式，它以%t开头并且以下面表格中的一个字母结尾</p>
+<table>
+<thead>
+<tr>
+<th>转换符</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>包括全部日期和时间信息</td>
+<td>星期一 十月 27 14:21:20 CST 2021</td>
+</tr>
+<tr>
+<td>F</td>
+<td>“年-月-日”格式</td>
+<td>2021-7-21</td>
+</tr>
+<tr>
+<td>D</td>
+<td>“月、日/年”格式</td>
+<td>10/21/2021</td>
+</tr>
+<tr>
+<td>r</td>
+<td>“HH:MM:SS PM”格式</td>
+<td>14:28:36下午</td>
+</tr>
+<tr>
+<td>T</td>
+<td>“HH:MM:SS”格式””</td>
+<td>14:28:36</td>
+</tr>
+<tr>
+<td>R</td>
+<td>“HH:MM”格式</td>
+<td>14:22</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Date;</span><br><span class="line"> </span><br><span class="line">public class DateDemo &#123;</span><br><span class="line"> </span><br><span class="line">  public static void main(String args[]) &#123;</span><br><span class="line">     // 初始化 Date 对象</span><br><span class="line">     Date date = new Date();</span><br><span class="line"> </span><br><span class="line">     //c的使用  </span><br><span class="line">    System.out.printf(&quot;全部日期和时间信息：%tc%n&quot;,date);          </span><br><span class="line">    //f的使用  </span><br><span class="line">    System.out.printf(&quot;年-月-日格式：%tF%n&quot;,date);  </span><br><span class="line">    //d的使用  </span><br><span class="line">    System.out.printf(&quot;月/日/年格式：%tD%n&quot;,date);  </span><br><span class="line">    //r的使用  </span><br><span class="line">    System.out.printf(&quot;HH:MM:SS PM格式（12时制）：%tr%n&quot;,date);  </span><br><span class="line">    //t的使用  </span><br><span class="line">    System.out.printf(&quot;HH:MM:SS格式（24时制）：%tT%n&quot;,date);  </span><br><span class="line">    //R的使用  </span><br><span class="line">    System.out.printf(&quot;HH:MM格式（24时制）：%tR&quot;,date);  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="java休眠（sleep"><a href="#java休眠（sleep" class="headerlink" title="java休眠（sleep)"></a>java休眠（sleep)</h2><p>sleep()使当前线程进入停滞状态，让出CPU的使用，目的是不让当前线程独自霸占该进程所获得CPU资源，以留一定时间给其他线程机会执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*</span><br><span class="line"></span><br><span class="line">public class DemoSleep&#123;</span><br><span class="line">	public static void main(String agrs[])&#123;</span><br><span class="line">		try&#123;</span><br><span class="line">			System.out.println(new Date()+&quot;\n&quot;);</span><br><span class="line">			Thread.sleep(1000*3);</span><br><span class="line">			System.out.println(new Date()+&quot;\n&quot;);</span><br><span class="line">			</span><br><span class="line">		&#125;catch&#123;</span><br><span class="line">			System.out.println(&quot;Got an exception!&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h2><p>Calendar类比Date类强大，可以在日期上加上或者减去值</p>
+<p>Calendar类是一个抽象类，在实际使用时实现特定的子类的对象，创建对象的过程对程序员来说是透明的，只需要使用getInstance方法创建即可。</p>
+<h6 id="创建一个代表系统当前日期的Calendar对象"><a href="#创建一个代表系统当前日期的Calendar对象" class="headerlink" title="创建一个代表系统当前日期的Calendar对象"></a>创建一个代表系统当前日期的Calendar对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Calendar C=Calendar.getInstance();//默认是当前日期</span><br></pre></td></tr></table></figure>
+
+<h6 id="创建一个指定日期的Calendar对象"><a href="#创建一个指定日期的Calendar对象" class="headerlink" title="创建一个指定日期的Calendar对象"></a>创建一个指定日期的Calendar对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//创建一个代表2009年6月12日的Canlendar对象</span><br><span class="line">Calendar C=Calendar.getInstance();</span><br><span class="line">c1.set(2009,6-1,12);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Calendar类对象信息的获得"><a href="#Calendar类对象信息的获得" class="headerlink" title="Calendar类对象信息的获得"></a>Calendar类对象信息的获得</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Calendar c1 = Calendar.getInstance();</span><br><span class="line">// 获得年份</span><br><span class="line">int year = c1.get(Calendar.YEAR);</span><br><span class="line">// 获得月份</span><br><span class="line">int month = c1.get(Calendar.MONTH) + 1;</span><br><span class="line">// 获得日期</span><br><span class="line">int date = c1.get(Calendar.DATE);</span><br><span class="line">// 获得小时</span><br><span class="line">int hour = c1.get(Calendar.HOUR_OF_DAY);</span><br><span class="line">// 获得分钟</span><br><span class="line">int minute = c1.get(Calendar.MINUTE);</span><br><span class="line">// 获得秒</span><br><span class="line">int second = c1.get(Calendar.SECOND);</span><br><span class="line">// 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推）</span><br><span class="line">int day = c1.get(Calendar.DAY_OF_WEEK);</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Xiaoy<br>
+    <strong>本文链接：</strong><a href="https://xhgm.club/java%E5%AD%A6%E4%B9%A0%E4%B8%89/" title="https:&#x2F;&#x2F;xhgm.club&#x2F;java%E5%AD%A6%E4%B9%A0%E4%B8%89&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xhgm.club&#x2F;java%E5%AD%A6%E4%B9%A0%E4%B8%89&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+        <div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool"> 
+              
+                
+              
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1627745277711"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+  
+
+
+
+
+
+</body>
+
+</html>
