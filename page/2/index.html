@@ -21,9 +21,9 @@
 <meta property="article:author" content="Xiaoy">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=1627745277750">
+  <link rel="stylesheet" href="/css/style.css?v=1638411913985">
   
-  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1627745277750">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1638411913985">
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
 </head>
 
@@ -48,7 +48,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>17</div>
+        <div><span>文章</span>19</div>
         <div><span>标签</span>2</div>
         <div><span>分类</span>0</div>
     </div>
@@ -124,6 +124,139 @@
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
         <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/SQL%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SQL基本命令" class="lazyload">
+                    <h1>SQL基本命令</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2021年07月11日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><p>模式的定义删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">为用户WANG定义一个学生-课程模式 S-T</span><br><span class="line">create schema &quot;S-T&quot; AUTHORIZATION WANG</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">为用户ZHANG创建一个模式TEST，并且在其中定义一个表</span><br><span class="line">Create SCHEMA TEST AUTHORIZATION ZHANG</span><br><span class="line">CREATE TABLE tab1(COL1 SAMLLINT,</span><br><span class="line">				COL2 INT,</span><br><span class="line">				COL3 CHAR(20),</span><br><span class="line">				COL4 NUMERIC(10,3),</span><br><span class="line">				COL5 DECIMAL(5,2));</span><br><span class="line">			</span><br><span class="line">DROP SCHEMA&lt;模式名&gt;&lt;CASCADE|RESTRICT&gt;</span><br><span class="line">CASCADE联级，删除模式的同时删除和模式相关联的数据库对象</span><br><span class="line"></span><br><span class="line">RESTRICT限制 ，如果该模式有其他相关联的数据库对象，则拒绝执行</span><br><span class="line"></span><br><span class="line">删除模式ZAHNG</span><br><span class="line">DROP SCHAME ZHANG CASCADE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="基本表的定义，修改、删除"><a href="#基本表的定义，修改、删除" class="headerlink" title="基本表的定义，修改、删除"></a>基本表的定义，修改、删除</h1><p>CREATE TABLE &lt;表名&gt;（列名，数据类型，约束条件，</p>
+<p>​                                            列名，数据类型，</p>
+<p>​                                            。。。。。，）；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">创建一个“学生”STUDENT表，学号是主键，姓名取值唯一</span><br><span class="line"></span><br><span class="line">CTREATE TABLE STUDENT (Sno CHAR(9) PRIMARY KEY,</span><br><span class="line">						Sname Char(20) UNIQUE,</span><br><span class="line">						Ssex char(2),</span><br><span class="line">						Sage smallint,</span><br><span class="line">						sdept char(20));</span><br><span class="line">				</span><br><span class="line">创建一个课程表 course</span><br><span class="line">Create table Course(Cno char(4) primary key,</span><br><span class="line">					Cname char(10),</span><br><span class="line">					Cpno char(4),</span><br><span class="line">					Ccredit Smallint ,</span><br><span class="line">					foreing key(Cpon) References course(Cno));</span><br><span class="line">					/*Cpno是外码</span><br><span class="line">   					被参照表是Course</span><br><span class="line">  					 被参照列是Cno*/</span><br><span class="line">  					</span><br><span class="line">  					</span><br><span class="line">创建一个学生选课表SC</span><br><span class="line">create table sc(</span><br><span class="line">				sno char(9),</span><br><span class="line">				Cno char(10),</span><br><span class="line">				Grade smallint,</span><br><span class="line">				primary key(sno,Cno),</span><br><span class="line">				foreing key (sno) references student(sno),</span><br><span class="line">				foreing key (Cno)references Course(Cno)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">					</span><br></pre></td></tr></table></figure>
+
+<p>Alert table&lt;表名&gt;</p>
+<p>ADD 新增列</p>
+<p>DROP COLUMN删除列</p>
+<p>DEROP CONSTRAINT删除指定完整性约束</p>
+<p>ALERT COLUMN用于删除原有的定义，包括修改列名和数据类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">向Student表新增入学时间 数据类型为日期型</span><br><span class="line"></span><br><span class="line">ALERT TABLE Student ADD S_entrance DATE;</span><br><span class="line"></span><br><span class="line">将年龄的数据类型改成整形</span><br><span class="line">alert table student alert column Sage Int</span><br><span class="line"></span><br><span class="line">增加课程名称必须取唯一的约束条件 </span><br><span class="line">alert table course Add Unique(Cname);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Drop TABLE &lt;表名&gt;（CASCADE|RESTRICT)</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>建立索引的目的：加快查询速度</p>
+<p>谁可以建立索引<br>数据库管理员 或 表的属主（即建立表的人</p>
+<p>Create (UNIQUE|CLUSTER) INDEX&lt;索引名&gt; ON&lt;表名&gt;（列名 次序）；</p>
+<p>&lt;次序&gt;：指定索引值的排列次序，升序：ASC，降序：DESC。缺省值：ASC</p>
+<p>升序：ASC 降序：DESC 缺省值 ASC</p>
+<p>UNIQUE：此索引的每一个索引值只对应唯一的数据记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">为学生-课程数据中的STUDENT,Course,SC三个表建立索引，Student按学号升序建立唯一索引，Course表按课程号建立唯一索引，SC表按照学号升序课程号降序建立唯一索引</span><br><span class="line"></span><br><span class="line">Create Unique index Stusno ON STUDENT(Sno);</span><br><span class="line">Create Unique index Coucno ON Course(Cno);</span><br><span class="line">Create Unique index SCno ON SC(Sno ASC,Cno DESC);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询|"></a>数据查询|</h1><p>SELECT ALL|DISTINCT &lt;目标列表表达式&gt;from &lt;表名|视图名&gt;|（select 语句 AS 别名）</p>
+<p>WHERE &lt;条件表达式&gt;</p>
+<p>GROUP BY &lt;列名1&gt;HAVING 条件表达式</p>
+<p>ORDER BY 列名2 ASC|DESC</p>
+<p>SELECT子句：指定要显示的属性列<br>FROM子句：指定查询对象（基本表或视图）<br>WHERE子句：指定查询条件<br>GROUP BY子句：对查询结果按指定列的值分组，该属性列值相等的元组为一个组。通常会在每组中作用聚集函数。<br>HAVING短语：只有满足指定条件的组才予以输出<br>ORDER BY子句：对查询结果表按指定列值的升序或降序排序 </p>
+<h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><p>查询全体学生的学号与姓名</p>
+<p>select Sno,Sname from student;</p>
+<p>查询全体学生的姓名、学号、所在系。</p>
+<p>select Sname,Sno,Sdept from student</p>
+<p>查询全体学生的详细记录</p>
+<p>select * from student</p>
+<p>查全体学生的姓名及其出生年份。</p>
+<p>select Sname.2021-Sage from student</p>
+<p>查询全体学生的姓名、出生年份和所在的院系，要求用小写字母表示系名。</p>
+<p>select Sname, 2021-Sage,LOWER(Sdept) from student;</p>
+<p>指定DISTINCT关键词，去掉表中重复的行</p>
+<p>select DISTINCT Sno from Student;</p>
+<p>查询所有姓刘学生的姓名、学号和性别。</p>
+<p>select Sname,Sno,Ssex from Student where Sname like’刘%’；</p>
+<p>查询名字中第2个字为”阳”字的学生的姓名和学号。</p>
+<p>select Sname,Sno from Student where Sname like’_阳%‘；</p>
+<h2 id="ORDER-BY子句"><a href="#ORDER-BY子句" class="headerlink" title="ORDER BY子句"></a>ORDER BY子句</h2><p>可以按一个或多个属性列排序<br>升序：ASC;降序：DESC;缺省值为升序<br>对于空值，排序时显示的次序由具体系统实现来决定</p>
+<p>查询选修了3号课程的学生的学号及其成绩，查询结果按分数降序排列。</p>
+<p>select Sno ,Grade from SC where Cn0=’3’ ORDER BY DESC;</p>
+<p>查询全体学生情况，查询结果按所在系的系号升序排列，同一系中的学生按年龄降序排列。</p>
+<p>select * from Student ORDER BY Sdept ASC,Sage DESC;</p>
+<h2 id="聚集函数："><a href="#聚集函数：" class="headerlink" title="聚集函数："></a>聚集函数：</h2><p>统计元组个数 count(*)</p>
+<p>统计一列中值的个数 count(DISTINCT|ALL 列名)</p>
+<p>计算一列值的总和（此列必须为数值型）</p>
+<p>SUM（DISTINCT|ALL 列名)</p>
+<p>计算一列值的平均值：</p>
+<p>AVG（DISTINCT|ALL 列名）</p>
+<p>求一列中最大或者最小值：</p>
+<p>MAX（DISTINCT|ALL 列名）</p>
+<p>MIN(DISTINCT |ALL 列名)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">查询学生总人数。</span><br><span class="line">select count(*)from student;</span><br><span class="line">查询选修了课程的学生人数</span><br><span class="line">select count(DISTINCT Sno) from SC;</span><br><span class="line">计算1号课程的学生平均成绩。</span><br><span class="line">select AVG(Grade) from SC where Cno=&#x27;1&#x27;;</span><br><span class="line">查询选修1号课程的学生最高分数。</span><br><span class="line">select Max(Grade)from sc where Cno=&#x27;1&#x27;;</span><br><span class="line">查询学生201215012选修课程的总学分数。</span><br><span class="line">select SUM(Scredict) from SC,Course where Sno=&#x27;201215012&#x27; and SC.Cno=Couse.Cno;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="GROUP-BY子句分组："><a href="#GROUP-BY子句分组：" class="headerlink" title="GROUP BY子句分组："></a>GROUP BY子句分组：</h2><p>​     细化聚集函数的作用对象<br> 如果未对查询结果分组，聚集函数将作用于整个查询结果<br> 对查询结果分组后，聚集函数将分别作用于每个组<br>按指定的一列或多列值分组，值相等的为一组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">求各个课程号及相应的选课人数。</span><br><span class="line">select Cno,Count(Sno) from Student,Course Group by Cno</span><br><span class="line">查询选修了3门以上课程的学生学号。</span><br><span class="line">select Sno from SC Group by(Sno) having count(*)&gt;3</span><br><span class="line"></span><br><span class="line">因为WHERE子句中是不能用聚集函数作为条件表达式</span><br><span class="line">查询平均成绩大于等于90分的学生学号和平均成绩</span><br><span class="line">select Sno ,AVG(Grade) from sc group by Sno having Avg(Grade)&gt;90;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>HAVING短语与WHERE子句的区别：<br>作用对象不同<br>WHERE子句作用于基表或视图，从中选择满足条件的元组<br>HAVING短语作用于组，从中选择满足条件的组。</p>
+<p>查询每个学生及其选修课程的情况<br>                 SELECT  Student.<em>, SC.</em><br>                 FROM     Student, SC<br>                 WHERE  Student.Sno = SC.Sno;</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/Handler/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Handler" class="lazyload">
+                    <h1>Handler</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2021年06月22日</a>
+            <a><i class="nexmoefont icon-areachart"></i>298 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <p>Android中的handler</p>
+<p>1.handler的作用和概念</p>
+<p>handler包含了线程队列和消息队列，实现异步消息处理机制。</p>
+<p>a.运行在某个线程上，共享线程的消息队列</p>
+<p>b.接收消息，调度消息，派发消息和处理消息</p>
+<p>c.实现消息异步处理</p>
+<p>handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thread和消息队列绑定在一起，然后可以传递消息和runnable对象到消息队列中，执行消息以后退出。</p>
+<p>Handler的作用是调度消息和runnable对象去被执行；使动作在不同的线程中被执行。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg" alt="img" class="lazyload"></p>
+<p>Android中对消息原型，消息队列，消息发送，消息循环，消息获取，消息派发，消息处理这几个部分进行了抽象，变成了四部分：Handler 、Massage、MassageQueue、Looper</p>
+<p>Massage:消息原型，包含消息描述和数据</p>
+<p>MassageQueue:消息队列</p>
+<p>Looper:完成消息循环</p>
+<p>Handler:驾驭整个消息系统模型，统领Massage,MassageQueue,Looper。</p>
+<p>Handler工作原理：</p>
+<p>sendMessage ：立即发送消息</p>
+<p>sendMessageDelayed：指定多少毫秒后发送消息。</p>
+
+            
+        </article>
+    </div>
     
     <div class="nexmoe-post">
         <a href="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/">
@@ -645,7 +778,7 @@ WinSCP 下载地址：https://winscp.net/eng/download.php
 
  
 
-<script async src="/js/app.js?v=1627745277750"></script>
+<script async src="/js/app.js?v=1638411913986"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>

@@ -4,7 +4,7 @@
 
 <head>
   
-  <title>文章归档：2021/6 - Lost</title>
+  <title>文章归档：2021/11 - Lost</title>
   <meta charset="UTF-8">
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -15,15 +15,15 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <meta property="og:type" content="website">
 <meta property="og:title" content="Lost">
-<meta property="og:url" content="https://xhgm.club/archives/2021/06/index.html">
+<meta property="og:url" content="https://xhgm.club/archives/2021/11/index.html">
 <meta property="og:site_name" content="Lost">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Xiaoy">
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=1638411913981">
+  <link rel="stylesheet" href="/css/style.css?v=1638411913983">
   
-  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1638411913981">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1638411913983">
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
 </head>
 
@@ -126,70 +126,139 @@
         <section class="nexmoe-posts">
     
     <div class="nexmoe-post">
-        <a href="/Handler/">
+        <a href="/Vue%E4%BB%BF%E8%98%91%E8%8F%87%E8%A1%97%E9%A1%B9%E7%9B%AE/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Handler" class="lazyload">
-                    <h1>Handler</h1>
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Vue仿蘑菇街项目" class="lazyload">
+                    <h1>Vue仿蘑菇街项目</h1>
                 </div>
             
         </a>
 
         <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年06月22日</a>
-            <a><i class="nexmoefont icon-areachart"></i>298 字</a>
+            <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月30日</a>
+            <a><i class="nexmoefont icon-areachart"></i>252 字</a>
             <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
         </div>
 
         <article>
             
-                <p>Android中的handler</p>
-<p>1.handler的作用和概念</p>
-<p>handler包含了线程队列和消息队列，实现异步消息处理机制。</p>
-<p>a.运行在某个线程上，共享线程的消息队列</p>
-<p>b.接收消息，调度消息，派发消息和处理消息</p>
-<p>c.实现消息异步处理</p>
-<p>handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thread和消息队列绑定在一起，然后可以传递消息和runnable对象到消息队列中，执行消息以后退出。</p>
-<p>Handler的作用是调度消息和runnable对象去被执行；使动作在不同的线程中被执行。</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg" alt="img" class="lazyload"></p>
-<p>Android中对消息原型，消息队列，消息发送，消息循环，消息获取，消息派发，消息处理这几个部分进行了抽象，变成了四部分：Handler 、Massage、MassageQueue、Looper</p>
-<p>Massage:消息原型，包含消息描述和数据</p>
-<p>MassageQueue:消息队列</p>
-<p>Looper:完成消息循环</p>
-<p>Handler:驾驭整个消息系统模型，统领Massage,MassageQueue,Looper。</p>
-<p>Handler工作原理：</p>
-<p>sendMessage ：立即发送消息</p>
-<p>sendMessageDelayed：指定多少毫秒后发送消息。</p>
-
+                <p>​    这是根据王元红老师指导完成的类似于蘑菇街的电商APP。后端数据接口由王元红老师提供，课程指路<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15741177Eh?from=search&seid=18165949126617740700&spm_id_from=333.337.0.0">最全最新Vue、Vuejs教程，从入门到精通</a></p>
+<h2 id="1、项目描述"><a href="#1、项目描述" class="headerlink" title="1、项目描述"></a>1、项目描述</h2><ul>
+<li>项目基于VueCLI3脚手架 + Vue全家桶 + ES6 + Webpack等技术开发</li>
+<li>项目采用模块化、组件化、工程化的模式开发</li>
+<li>项目主要分为四大模块：首页 + 分类 + 购物车 + 我的</li>
+</ul>
+<h2 id="2、使用的插件或第三方库"><a href="#2、使用的插件或第三方库" class="headerlink" title="2、使用的插件或第三方库"></a>2、使用的插件或第三方库</h2><ul>
+<li><p>使用 vue-router 开发单页面</p>
+</li>
+<li><p>使用 vuex 管理应用组件的状态</p>
+</li>
+<li><p>使用 axios 的封装从后端拿取数据</p>
+</li>
+<li><p>使用 better-scroll 实现移动端页面滑动效果</p>
+</li>
+<li><p>使用mitt实现$bus事件总线</p>
+</li>
+</ul>
+<h2 id="3、实现的功能"><a href="#3、实现的功能" class="headerlink" title="3、实现的功能"></a>3、实现的功能</h2><ul>
+<li><p> 首页商品款式的切换</p>
+</li>
+<li><p>首页到详情页的跳转</p>
+</li>
+<li><p>右下角回到顶部按钮</p>
+</li>
+</ul>
+<h3 id="4-实现"><a href="#4-实现" class="headerlink" title="4.实现"></a>4.实现</h3><p>以下是项目截图</p>
+<p><img src="D:\Hexo\source_posts\Vue仿蘑菇街项目\01.png"></p>
+<p><img src="D:\Hexo\source_posts\Vue仿蘑菇街项目\02.png"></p>
+<p><img src="D:\Hexo\source_posts\Vue仿蘑菇街项目\03.png"></p>
+<h2 id="项目源码已放到GitHub上，欢迎访问"><a href="#项目源码已放到GitHub上，欢迎访问" class="headerlink" title="项目源码已放到GitHub上，欢迎访问~"></a>项目源码已放到GitHub上，欢迎访问~</h2><h2 id="项目地址-https-github-com-xiaoyyya-suermarket"><a href="#项目地址-https-github-com-xiaoyyya-suermarket" class="headerlink" title="项目地址:https://github.com/xiaoyyya/suermarket"></a>项目地址:<a target="_blank" rel="noopener" href="https://github.com/xiaoyyya/suermarket">https://github.com/xiaoyyya/suermarket</a></h2>
             
         </article>
     </div>
     
     <div class="nexmoe-post">
-        <a href="/Android%E5%AF%BC%E5%85%A5%E5%B7%A5%E7%A8%8B%E8%A7%A3%E5%86%B3SDK%E4%B8%8D%E9%80%82%E9%85%8D/">
+        <a href="/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/08%E6%80%BB%E7%BB%93--promise/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Android导入工程解决SDK不适配" class="lazyload">
-                    <h1>Android导入工程解决SDK不适配</h1>
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="" class="lazyload">
+                    <h1></h1>
                 </div>
             
         </a>
 
         <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年06月18日</a>
-            <a><i class="nexmoefont icon-areachart"></i>154 字</a>
+            <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月08日</a>
+            <a><i class="nexmoefont icon-areachart"></i>238 字</a>
             <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
         </div>
 
         <article>
             
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们在学习过程中经常会从网上下载一些开源的代码去学习，这个时候工程和我们所属的环境通常是不适用的。在这里教大家一招解决这个问题。</p>
-<p>解决This version of the Android Support plugin for IntelliJ IDEA (or Android</p>
-<p>SDK不适配等问题</p>
-<p>首先在Android Studio新建一个工程或者使用之前的可以运行的工程，将以下四个文件复制到将要导入的工程中替换掉该工程的这几个文件。</p>
-<p><img src="1.png"></p>
-<p><img src="2.png"></p>
-<p>然后再打开该工程就可以正确运行。</p>
+                <h2 id="一、Promise"><a href="#一、Promise" class="headerlink" title="一、Promise"></a>一、Promise</h2><ul>
+<li><h3 id="promise-的基本使用"><a href="#promise-的基本使用" class="headerlink" title="promise 的基本使用"></a>promise 的基本使用</h3><ul>
+<li>如何将异步操作放入promise</li>
+<li>（resolve，reject）=》then()/catch</li>
+</ul>
+</li>
+<li><h3 id="promise的链式调用"><a href="#promise的链式调用" class="headerlink" title="promise的链式调用"></a>promise的链式调用</h3><ul>
+<li>一开始new promise</li>
+<li>Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx<ul>
+<li>对错误的处理 调用reject</li>
+<li>throw ‘error message’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="promise的all方法"><a href="#promise的all方法" class="headerlink" title="promise的all方法"></a>promise的all方法</h3><ul>
+<li>将多个异步操作放到一起</li>
+<li>当异步操作都完成，再统一进行处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、vuex"><a href="#二、vuex" class="headerlink" title="二、vuex"></a>二、vuex</h2><ul>
+<li>什么是状态管理</li>
+<li>vuex的基本使用<ul>
+<li>直接修改state</li>
+<li>mutations–&gt;devtools</li>
+</ul>
+</li>
+<li>核心概念<ul>
+<li>state–&gt;单一状态树</li>
+<li>getters</li>
+<li>mutations</li>
+<li>actions–&gt;异步操作（promise</li>
+<li>modules</li>
+</ul>
+</li>
+<li>目录组织方式</li>
+</ul>
+<h2 id="三、网络请求封装"><a href="#三、网络请求封装" class="headerlink" title="三、网络请求封装"></a>三、网络请求封装</h2><ul>
+<li>网络请求方式的选择</li>
+<li>axios的基本使用</li>
+<li>axios相关配置</li>
+<li>axios创建实例</li>
+<li>axios的封装</li>
+</ul>
+<h2 id="四、项目开发"><a href="#四、项目开发" class="headerlink" title="四、项目开发"></a>四、项目开发</h2><ul>
+<li><p>划分项目结构</p>
+</li>
+<li><p>引用了两个css文件</p>
+</li>
+<li><p>vue.config.js和.editorconfig</p>
+</li>
+<li><p>项目的模块划分：tabbar–》路由映射</p>
+</li>
+<li><p>首页开发</p>
+<ul>
+<li>navbar的封装</li>
+<li>网络数据的请求</li>
+<li>轮播图</li>
+<li>推荐消息</li>
+</ul>
+</li>
+</ul>
 
             
         </article>
@@ -215,7 +284,7 @@
 
  
 
-<script async src="/js/app.js?v=1638411913982"></script>
+<script async src="/js/app.js?v=1638411913984"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>

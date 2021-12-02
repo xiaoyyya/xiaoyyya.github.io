@@ -4,7 +4,7 @@
 
 <head>
   
-  <title>Handler - Lost</title>
+  <title>Lost</title>
   <meta charset="UTF-8">
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -13,23 +13,21 @@
   
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <meta name="description" content="Android中的handler 1.handler的作用和概念 handler包含了线程队列和消息队列，实现异步消息处理机制。 a.运行在某个线程上，共享线程的消息队列 b.接收消息，调度消息，派发消息和处理消息 c.实现消息异步处理 handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thre">
+  <meta name="description" content="一、Promise promise 的基本使用 如何将异步操作放入promise （resolve，reject）&#x3D;》then()&#x2F;catch   promise的链式调用 一开始new promise Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx 对错误的处理 调用reject throw ‘error message’     promise的a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Handler">
-<meta property="og:url" content="https://xhgm.club/Handler/index.html">
+<meta property="og:title" content="Lost">
+<meta property="og:url" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/08%E6%80%BB%E7%BB%93--promise/index.html">
 <meta property="og:site_name" content="Lost">
-<meta property="og:description" content="Android中的handler 1.handler的作用和概念 handler包含了线程队列和消息队列，实现异步消息处理机制。 a.运行在某个线程上，共享线程的消息队列 b.接收消息，调度消息，派发消息和处理消息 c.实现消息异步处理 handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thre">
+<meta property="og:description" content="一、Promise promise 的基本使用 如何将异步操作放入promise （resolve，reject）&#x3D;》then()&#x2F;catch   promise的链式调用 一开始new promise Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx 对错误的处理 调用reject throw ‘error message’     promise的a">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg">
-<meta property="article:published_time" content="2021-06-22T06:22:07.000Z">
-<meta property="article:modified_time" content="2021-06-22T07:22:02.020Z">
+<meta property="article:published_time" content="2021-11-08T04:42:59.942Z">
+<meta property="article:modified_time" content="2021-11-08T14:09:22.134Z">
 <meta property="article:author" content="Xiaoy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=1638411913953">
+  <link rel="stylesheet" href="/css/style.css?v=1638411913934">
   
-  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1638411913953">
+  <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1638411913934">
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Lost" type="application/atom+xml">
 </head>
 
@@ -134,36 +132,82 @@
   <article>
     
         <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Handler" class="lazyload">
-            <h1>Handler</h1>
+            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="" class="lazyload">
+            <h1></h1>
         </div>
     
     
     <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2021年06月22日</a>
-    <a><i class="nexmoefont icon-areachart"></i>298 字</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月08日</a>
+    <a><i class="nexmoefont icon-areachart"></i>238 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
 </div>
 
     
 
-    <p>Android中的handler</p>
-<p>1.handler的作用和概念</p>
-<p>handler包含了线程队列和消息队列，实现异步消息处理机制。</p>
-<p>a.运行在某个线程上，共享线程的消息队列</p>
-<p>b.接收消息，调度消息，派发消息和处理消息</p>
-<p>c.实现消息异步处理</p>
-<p>handler可以让你发送和处理runnable对象，每个handler对象对应一个Thread和Thread的消息队列。handler创建时，它就自动和Thread和消息队列绑定在一起，然后可以传递消息和runnable对象到消息队列中，执行消息以后退出。</p>
-<p>Handler的作用是调度消息和runnable对象去被执行；使动作在不同的线程中被执行。</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://images2015.cnblogs.com/blog/464718/201604/464718-20160402145344629-1932461459.jpg" alt="img" class="lazyload"></p>
-<p>Android中对消息原型，消息队列，消息发送，消息循环，消息获取，消息派发，消息处理这几个部分进行了抽象，变成了四部分：Handler 、Massage、MassageQueue、Looper</p>
-<p>Massage:消息原型，包含消息描述和数据</p>
-<p>MassageQueue:消息队列</p>
-<p>Looper:完成消息循环</p>
-<p>Handler:驾驭整个消息系统模型，统领Massage,MassageQueue,Looper。</p>
-<p>Handler工作原理：</p>
-<p>sendMessage ：立即发送消息</p>
-<p>sendMessageDelayed：指定多少毫秒后发送消息。</p>
+    <h2 id="一、Promise"><a href="#一、Promise" class="headerlink" title="一、Promise"></a>一、Promise</h2><ul>
+<li><h3 id="promise-的基本使用"><a href="#promise-的基本使用" class="headerlink" title="promise 的基本使用"></a>promise 的基本使用</h3><ul>
+<li>如何将异步操作放入promise</li>
+<li>（resolve，reject）=》then()/catch</li>
+</ul>
+</li>
+<li><h3 id="promise的链式调用"><a href="#promise的链式调用" class="headerlink" title="promise的链式调用"></a>promise的链式调用</h3><ul>
+<li>一开始new promise</li>
+<li>Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx<ul>
+<li>对错误的处理 调用reject</li>
+<li>throw ‘error message’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="promise的all方法"><a href="#promise的all方法" class="headerlink" title="promise的all方法"></a>promise的all方法</h3><ul>
+<li>将多个异步操作放到一起</li>
+<li>当异步操作都完成，再统一进行处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、vuex"><a href="#二、vuex" class="headerlink" title="二、vuex"></a>二、vuex</h2><ul>
+<li>什么是状态管理</li>
+<li>vuex的基本使用<ul>
+<li>直接修改state</li>
+<li>mutations–&gt;devtools</li>
+</ul>
+</li>
+<li>核心概念<ul>
+<li>state–&gt;单一状态树</li>
+<li>getters</li>
+<li>mutations</li>
+<li>actions–&gt;异步操作（promise</li>
+<li>modules</li>
+</ul>
+</li>
+<li>目录组织方式</li>
+</ul>
+<h2 id="三、网络请求封装"><a href="#三、网络请求封装" class="headerlink" title="三、网络请求封装"></a>三、网络请求封装</h2><ul>
+<li>网络请求方式的选择</li>
+<li>axios的基本使用</li>
+<li>axios相关配置</li>
+<li>axios创建实例</li>
+<li>axios的封装</li>
+</ul>
+<h2 id="四、项目开发"><a href="#四、项目开发" class="headerlink" title="四、项目开发"></a>四、项目开发</h2><ul>
+<li><p>划分项目结构</p>
+</li>
+<li><p>引用了两个css文件</p>
+</li>
+<li><p>vue.config.js和.editorconfig</p>
+</li>
+<li><p>项目的模块划分：tabbar–》路由映射</p>
+</li>
+<li><p>首页开发</p>
+<ul>
+<li>navbar的封装</li>
+<li>网络数据的请求</li>
+<li>轮播图</li>
+<li>推荐消息</li>
+</ul>
+</li>
+</ul>
 
   </article>
 
@@ -171,7 +215,7 @@
     
   <div class="nexmoe-post-copyright">
     <strong>本文作者：</strong>Xiaoy<br>
-    <strong>本文链接：</strong><a href="https://xhgm.club/Handler/" title="https:&#x2F;&#x2F;xhgm.club&#x2F;Handler&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xhgm.club&#x2F;Handler&#x2F;</a><br>
+    <strong>本文链接：</strong><a href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/08%E6%80%BB%E7%BB%93--promise/" title="https:&#x2F;&#x2F;xhgm.club&#x2F;Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89&#x2F;08%E6%80%BB%E7%BB%93--promise&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xhgm.club&#x2F;Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89&#x2F;08%E6%80%BB%E7%BB%93--promise&#x2F;</a><br>
     
       <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
     
@@ -222,7 +266,7 @@
 
  
 
-<script async src="/js/app.js?v=1638411913953"></script>
+<script async src="/js/app.js?v=1638411913935"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
