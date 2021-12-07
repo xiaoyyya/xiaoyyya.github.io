@@ -6,7 +6,7 @@
   <link href="https://xhgm.club/atom.xml" rel="self"/>
   
   <link href="https://xhgm.club/"/>
-  <updated>2021-12-05T14:09:18.411Z</updated>
+  <updated>2021-12-07T12:24:28.571Z</updated>
   <id>https://xhgm.club/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GIS期末复习</title>
+    <link href="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+    <id>https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</id>
+    <published>2021-12-07T10:18:19.000Z</published>
+    <updated>2021-12-07T12:24:28.571Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>vuex状态管理</title>
@@ -404,27 +425,6 @@
     <id>https://xhgm.club/SQlite%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</id>
     <published>2021-05-04T01:52:20.000Z</published>
     <updated>2021-05-07T05:10:09.520Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://xhgm.club/test/"/>
-    <id>https://xhgm.club/test/</id>
-    <published>2021-05-01T17:15:52.000Z</published>
-    <updated>2021-05-01T17:16:59.467Z</updated>
     
     
       

@@ -20,27 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;xhgm.club&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
-<meta name="description" content="一、Promise promise 的基本使用 如何将异步操作放入promise （resolve，reject）&#x3D;》then()&#x2F;catch   promise的链式调用 一开始new promise Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx 对错误的处理 调用reject throw ‘error message’     promise的a">
+<meta name="description" content="GIS的基本概念、组成及功能和用途 地理信息系统是以采集，贮存，管理，分析，和描述整个或者部分地球表面与地理分布有关的数据的空间信息系统 地理信息系统的特征 地域性 多维结构 时序特征   功能 数据搜集、监测和编辑 数据操作 数据存储组织 空间查询和分析 图形显示和结果输出 数据更新   应用 地形制图 导航系统 铁路网络模拟系统 矿产资源评估 环境评估和监测 城市规划和管理 教练与模拟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lost">
-<meta property="og:url" content="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/08%E6%80%BB%E7%BB%93--promise/index.html">
+<meta property="og:title" content="GIS期末复习">
+<meta property="og:url" content="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Lost">
-<meta property="og:description" content="一、Promise promise 的基本使用 如何将异步操作放入promise （resolve，reject）&#x3D;》then()&#x2F;catch   promise的链式调用 一开始new promise Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx 对错误的处理 调用reject throw ‘error message’     promise的a">
+<meta property="og:description" content="GIS的基本概念、组成及功能和用途 地理信息系统是以采集，贮存，管理，分析，和描述整个或者部分地球表面与地理分布有关的数据的空间信息系统 地理信息系统的特征 地域性 多维结构 时序特征   功能 数据搜集、监测和编辑 数据操作 数据存储组织 空间查询和分析 图形显示和结果输出 数据更新   应用 地形制图 导航系统 铁路网络模拟系统 矿产资源评估 环境评估和监测 城市规划和管理 教练与模拟">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-08T04:42:59.942Z">
-<meta property="article:modified_time" content="2021-11-08T14:09:22.134Z">
+<meta property="og:image" content="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20211207191117771.png">
+<meta property="og:image" content="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20211207191137317.png">
+<meta property="article:published_time" content="2021-12-07T10:18:19.000Z">
+<meta property="article:modified_time" content="2021-12-07T12:24:28.571Z">
 <meta property="article:author" content="Xiaoy">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20211207191117771.png">
 
 
-<link rel="canonical" href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/08%E6%80%BB%E7%BB%93--promise/">
+<link rel="canonical" href="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;xhgm.club&#x2F;Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89&#x2F;08%E6%80%BB%E7%BB%93--promise&#x2F;&quot;,&quot;path&quot;:&quot;Hadoop的集群搭建windows基于Hyper-V虚拟机超详细教程（一主二从）&#x2F;08总结--promise&#x2F;&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;xhgm.club&#x2F;GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0&#x2F;&quot;,&quot;path&quot;:&quot;GIS期末复习&#x2F;&quot;,&quot;title&quot;:&quot;GIS期末复习&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title> | Lost</title><script src="/js/config.js"></script>
+<title>GIS期末复习 | Lost</title><script src="/js/config.js"></script>
   
 
 
@@ -108,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Promise"><span class="nav-number">1.</span> <span class="nav-text">一、Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#promise-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">promise 的基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#promise%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">promise的链式调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#promise%E7%9A%84all%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">promise的all方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81vuex"><span class="nav-number">2.</span> <span class="nav-text">二、vuex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">三、网络请求封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91"><span class="nav-number">4.</span> <span class="nav-text">四、项目开发</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GIS%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E3%80%81%E7%BB%84%E6%88%90%E5%8F%8A%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94"><span class="nav-number">1.</span> <span class="nav-text">GIS的基本概念、组成及功能和用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90%E3%80%81%E5%90%84%E4%B8%AA%E8%AE%BE%E5%A4%87%E7%9A%84%E5%8A%9F%E8%83%BD%E3%80%81%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">地理信息系统的组成、各个设备的功能、空间数据的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8B%93%E6%89%91%E5%85%B3%E7%B3%BB%EF%BC%8C%E4%B8%A4%E7%A7%8D%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">地理空间数据的拓扑关系，两种空间数据结构的特点</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xhgm.club/Hadoop%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BAwindows%E5%9F%BA%E4%BA%8EHyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B6%85%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%8E%EF%BC%89/08%E6%80%BB%E7%BB%93--promise/">
+    <link itemprop="mainEntityOfPage" href="https://xhgm.club/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -178,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          GIS期末复习
         </h1>
 
         <div class="post-meta-container">
@@ -190,7 +193,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-11-08 12:42:59 / 修改时间：22:09:22" itemprop="dateCreated datePublished" datetime="2021-11-08T12:42:59+08:00">2021-11-08</time>
+      <time title="创建时间：2021-12-07 18:18:19 / 修改时间：20:24:28" itemprop="dateCreated datePublished" datetime="2021-12-07T18:18:19+08:00">2021-12-07</time>
     </span>
 
   
@@ -203,69 +206,80 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="一、Promise"><a href="#一、Promise" class="headerlink" title="一、Promise"></a>一、Promise</h2><ul>
-<li><h3 id="promise-的基本使用"><a href="#promise-的基本使用" class="headerlink" title="promise 的基本使用"></a>promise 的基本使用</h3><ul>
-<li>如何将异步操作放入promise</li>
-<li>（resolve，reject）=》then()/catch</li>
+        <h3 id="GIS的基本概念、组成及功能和用途"><a href="#GIS的基本概念、组成及功能和用途" class="headerlink" title="GIS的基本概念、组成及功能和用途"></a>GIS的基本概念、组成及功能和用途</h3><ul>
+<li>地理信息系统是以采集，贮存，管理，分析，和描述整个或者部分地球表面与地理分布有关的数据的空间信息系统</li>
+<li>地理信息系统的特征<ul>
+<li>地域性</li>
+<li>多维结构</li>
+<li>时序特征</li>
 </ul>
 </li>
-<li><h3 id="promise的链式调用"><a href="#promise的链式调用" class="headerlink" title="promise的链式调用"></a>promise的链式调用</h3><ul>
-<li>一开始new promise</li>
-<li>Promise.resolve 对结果进行处理的时候，直接返回 return res+xxx<ul>
-<li>对错误的处理 调用reject</li>
-<li>throw ‘error message’</li>
+<li>功能<ul>
+<li>数据搜集、监测和编辑</li>
+<li>数据操作</li>
+<li>数据存储组织</li>
+<li>空间查询和分析</li>
+<li>图形显示和结果输出</li>
+<li>数据更新</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>地形制图</li>
+<li>导航系统</li>
+<li>铁路网络模拟系统</li>
+<li>矿产资源评估</li>
+<li>环境评估和监测</li>
+<li>城市规划和管理</li>
+<li>教练与模拟</li>
 </ul>
 </li>
 </ul>
+<h3 id="地理信息系统的组成、各个设备的功能、空间数据的分类"><a href="#地理信息系统的组成、各个设备的功能、空间数据的分类" class="headerlink" title="地理信息系统的组成、各个设备的功能、空间数据的分类"></a>地理信息系统的组成、各个设备的功能、空间数据的分类</h3><ul>
+<li>组成<ul>
+<li>用户   系统组织、管理、维护和数据更新</li>
+<li>软件  图形及属性编辑、空间数据输入与转换、空间数据管理系统、空间查询和空间分析、制图</li>
+<li>硬件  输入、贮存、输出、网络</li>
+<li>数据</li>
+</ul>
 </li>
-<li><h3 id="promise的all方法"><a href="#promise的all方法" class="headerlink" title="promise的all方法"></a>promise的all方法</h3><ul>
-<li>将多个异步操作放到一起</li>
-<li>当异步操作都完成，再统一进行处理</li>
+<li>空间数据分类<ul>
+<li>几何数据</li>
+<li>关系数据</li>
+<li>属性数据</li>
 </ul>
 </li>
 </ul>
-<h2 id="二、vuex"><a href="#二、vuex" class="headerlink" title="二、vuex"></a>二、vuex</h2><ul>
-<li>什么是状态管理</li>
-<li>vuex的基本使用<ul>
-<li>直接修改state</li>
-<li>mutations–&gt;devtools</li>
+<h3 id="地理空间数据的拓扑关系，两种空间数据结构的特点"><a href="#地理空间数据的拓扑关系，两种空间数据结构的特点" class="headerlink" title="地理空间数据的拓扑关系，两种空间数据结构的特点"></a>地理空间数据的拓扑关系，两种空间数据结构的特点</h3><ul>
+<li>拓扑结构是明确定义空间结构关系的一种教学方法</li>
+</ul>
+<ol>
+<li>地理空间数据的拓扑关系<ul>
+<li>拓扑邻接：同类元素之间的拓扑关系</li>
+<li>拓扑关联：不同类元素之间的拓扑关系</li>
+<li>拓扑包含：同类不同级元素之间的拓扑关系</li>
 </ul>
 </li>
-<li>核心概念<ul>
-<li>state–&gt;单一状态树</li>
-<li>getters</li>
-<li>mutations</li>
-<li>actions–&gt;异步操作（promise</li>
-<li>modules</li>
-</ul>
-</li>
-<li>目录组织方式</li>
-</ul>
-<h2 id="三、网络请求封装"><a href="#三、网络请求封装" class="headerlink" title="三、网络请求封装"></a>三、网络请求封装</h2><ul>
-<li>网络请求方式的选择</li>
-<li>axios的基本使用</li>
-<li>axios相关配置</li>
-<li>axios创建实例</li>
-<li>axios的封装</li>
-</ul>
-<h2 id="四、项目开发"><a href="#四、项目开发" class="headerlink" title="四、项目开发"></a>四、项目开发</h2><ul>
-<li><p>划分项目结构</p>
-</li>
-<li><p>引用了两个css文件</p>
-</li>
-<li><p>vue.config.js和.editorconfig</p>
-</li>
-<li><p>项目的模块划分：tabbar–》路由映射</p>
-</li>
-<li><p>首页开发</p>
+</ol>
 <ul>
-<li>navbar的封装</li>
-<li>网络数据的请求</li>
-<li>轮播图</li>
-<li>推荐消息</li>
+<li><p>矢量数据结构</p>
+<ul>
+<li><p>矢量数据结构是通过记录坐标的方式来表示点、线、面等地理实体</p>
+<p>特点是定位明显、属性隐含</p>
+</li>
+<li><p><img src="/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20211207191117771.png" alt="image-20211207191117771"></p>
+</li>
+</ul>
+</li>
+<li><p>栅格数据结构</p>
+<ul>
+<li>栅格数据结构是以规则的阵列来表示空间地物或现象分布的数据组织，组织的每个数据表示地理要输的非几何属性特性</li>
+<li>特点：属性明显、定位隐含</li>
+<li>栅格结构用密集正方形（或其他形状）将地理区域划分为网格阵列，位置由行、列号定义</li>
+<li>   栅格数据表示的是二维表面上的地理数据的离散化数值。在栅格数据中，地表被分割为相互邻接、规则排列的地块，每个地块与一个象元相对应。因此，栅格数据的比例尺就是栅格(象元)的大小与地表相应单元的大小之比，当象元所表示的面积较大时，对长度、面积等的量测有较大影响。每个象元的属性是地表相应区域内地理数据的近似值，因而有可能产生属性方面的偏差。</li>
 </ul>
 </li>
 </ul>
+<p><img src="/GIS%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image-20211207191137317.png" alt="image-20211207191137317"></p>
 
     </div>
 
@@ -279,14 +293,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/H5%E5%AD%A6%E4%B9%A0/" rel="prev" title="H5学习">
-                  <i class="fa fa-chevron-left"></i> H5学习
+                <a href="/vuex%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" rel="prev" title="vuex状态管理">
+                  <i class="fa fa-chevron-left"></i> vuex状态管理
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Vue%E4%BB%BF%E8%98%91%E8%8F%87%E8%A1%97%E9%A1%B9%E7%9B%AE/" rel="next" title="Vue仿蘑菇街项目">
-                  Vue仿蘑菇街项目 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
